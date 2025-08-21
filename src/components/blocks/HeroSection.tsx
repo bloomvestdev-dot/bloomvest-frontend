@@ -77,7 +77,7 @@ export default function HeroSection({
             </div>
           </div>
 
-          <div className="relative flex h-[200px] gap-4 rounded-2xl bg-black overflow-hidden">
+          <div className="relative flex h-[200px] gap-4 rounded-3xl bg-black overflow-hidden">
             <div className="left-0">
               <StrapiImage
                 src={imageTwo?.url}

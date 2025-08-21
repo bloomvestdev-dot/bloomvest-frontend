@@ -18,7 +18,18 @@ export interface LogoProps {
   id: number;
 }
 
-type ComponentType = "blocks.hero-section";
+type ComponentType =
+  | "blocks.hero-section"
+  | "blocks.service-section"
+  | "blocks.our-story"
+  | "blocks.webinar"
+  | "blocks.about-us"
+  | "blocks.mission-vision"
+  | "blocks.our-values"
+  | "blocks.why-choose"
+  | "blocks.education-hero"
+  | "blocks.latest-course"
+  | "blocks.featured-block";
 
 interface Base<
   T extends ComponentType,
@@ -33,7 +44,18 @@ interface Base<
   data?: D;
 }
 
-export type Block = HeroSectionProps;
+export type Block =
+  | HeroSectionProps
+  | ServiceSectionProps
+  | OurStoryProps
+  | WebinarProps
+  | AboutHeroSectionProps
+  | MissionVisionProps
+  | OurValuesProps
+  | WhyChooseProps
+  | EducationHeriProps
+  | LatestCourseProps
+  | FeaturedCourseProps;
 
 export interface HeroSectionProps extends Base<"blocks.hero-section"> {
   heading: string;
@@ -44,4 +66,150 @@ export interface HeroSectionProps extends Base<"blocks.hero-section"> {
   imageThree: ImageProps;
   cta?: LinkProps;
   logos?: LogoProps[];
+}
+
+export interface CardProps {
+  id: number;
+  title: string;
+  description: string;
+}
+
+export interface ServiceSectionProps extends Base<"blocks.service-section"> {
+  heading: string;
+  description: string;
+  cards: CardProps[];
+  background: {
+    id: number;
+    documentId: string;
+    url: string;
+    name: string;
+  };
+}
+export interface OurStoryProps extends Base<"blocks.our-story"> {
+  heading: string;
+  description: string;
+  image: {
+    id: number;
+    documentId: string;
+    url: string;
+    name: string;
+  };
+}
+export interface WebinarProps extends Base<"blocks.webinar"> {
+  heading: string;
+  description: string;
+  subtitle: string;
+  card: {
+    id: number;
+    count: string;
+    avatar: {
+      id: string;
+      url: string;
+      name: string;
+    }[];
+    backgroud: {
+      id: number;
+      url: string;
+      name: string;
+    };
+  };
+  image: {
+    id: number;
+    documentId: string;
+    url: string;
+    name: string;
+  };
+}
+
+export interface AboutHeroSectionProps extends Base<"blocks.about-us"> {
+  title: string;
+  description: string;
+  card: {
+    id: number;
+    title: string;
+    description: string;
+  }[];
+}
+export interface MissionVisionProps extends Base<"blocks.mission-vision"> {
+  missionCard: {
+    id: number;
+    title: string;
+    description: string;
+  };
+  visionCard: {
+    id: number;
+    title: string;
+    description: string;
+  };
+  missionBg: {
+    id: number;
+    documentId: string;
+    url: string;
+    name: string;
+  };
+  visionBg: {
+    id: number;
+    documentId: string;
+    url: string;
+    name: string;
+  };
+}
+export interface OurValuesProps extends Base<"blocks.our-values"> {
+  title: string;
+  cards: {
+    id: number;
+    title: string;
+    description: string;
+  }[];
+  icons: {
+    id: number;
+    documentId: string;
+    url: string;
+    name: string;
+  }[];
+  background: {
+    id: number;
+    documentId: string;
+    url: string;
+    name: string;
+  };
+}
+
+export interface WhyChooseProps extends Base<"blocks.why-choose"> {
+  title: string;
+  list: {
+    id: number;
+    title: string;
+  }[];
+}
+
+export interface EducationHeriProps extends Base<"blocks.education-hero"> {
+  title: string;
+  description: string;
+  stats: {
+    id: number;
+    title: string;
+    description: string;
+  }[];
+  background: {
+    id: number;
+    documentId: string;
+    url: string;
+    name: string;
+  };
+}
+
+export interface LatestCourseProps extends Base<"blocks.latest-course"> {
+  title: string;
+  description: string;
+}
+
+export interface FeaturedCourseProps extends Base<"blocks.featured-block"> {
+  title: string;
+  background: {
+    id: number;
+    documentId: string;
+    url: string;
+    name: string;
+  };
 }

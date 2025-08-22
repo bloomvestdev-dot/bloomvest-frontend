@@ -189,6 +189,14 @@ const pageBySlugQuery = (slug: string) =>
               },
             },
           },
+          "blocks.blog-hero": {
+            populate: {
+              categories: true,
+            },
+          },
+          "blocks.latest-article": {
+            populate: true,
+          },
         },
       },
     },
@@ -218,5 +226,28 @@ export async function getCourses() {
     },
   });
 
+  return await fetchAPI(url.href, { method: "GET" });
+}
+
+const allBlogsQuery = qs.stringify({
+  sort: ["createdAt:desc"],
+
+  populate: {
+    blog: {
+      populate: {
+        image: {
+          fields: ["url", "name"],
+        },
+      },
+    },
+  },
+});
+
+export async function getBlogs() {
+  const path = "/api/blogs";
+  const BASE_URL = getStrapiURL();
+  const url = new URL(path, BASE_URL);
+
+  url.search = allBlogsQuery;
   return await fetchAPI(url.href, { method: "GET" });
 }

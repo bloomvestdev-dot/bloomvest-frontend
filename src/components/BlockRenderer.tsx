@@ -10,8 +10,15 @@ import WhyChoose from "./blocks/about-us/WhyChoose";
 import EducationHero from "./blocks/education/EducationHero";
 import LatestCourse from "./blocks/education/LatestCourse";
 import FeaturedCourses from "./blocks/education/FeaturedCourses";
+import BlogHero from "./blocks/blogs/BlogHero";
+import LatestArticles from "./blocks/blogs/LatestArticles";
 
-function blockRenderer(block: Block, index: number, latestCourses: any[]) {
+function blockRenderer(
+  block: Block,
+  index: number,
+  latestCourses: any[],
+  allBlogs?: any[]
+) {
   switch (block.__component) {
     case "blocks.hero-section":
       return <HeroSection {...block} key={index} />;
@@ -45,6 +52,10 @@ function blockRenderer(block: Block, index: number, latestCourses: any[]) {
       return (
         <FeaturedCourses {...block} courses={featuredCourses} key={index} />
       );
+    case "blocks.blog-hero":
+      return <BlogHero {...block} key={index} />;
+    case "blocks.latest-article":
+      return <LatestArticles {...block} key={index} allBlogs={allBlogs} />;
     default:
       return null;
   }
@@ -53,11 +64,13 @@ function blockRenderer(block: Block, index: number, latestCourses: any[]) {
 export function BlockRenderer({
   blocks,
   latestCourses = [],
+  allBlogs,
 }: {
   blocks: Block[];
   latestCourses?: any[];
+  allBlogs?: any[];
 }) {
   return blocks.map((block, index) =>
-    blockRenderer(block, index, latestCourses)
+    blockRenderer(block, index, latestCourses, allBlogs)
   );
 }

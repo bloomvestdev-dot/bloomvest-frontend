@@ -29,7 +29,9 @@ type ComponentType =
   | "blocks.why-choose"
   | "blocks.education-hero"
   | "blocks.latest-course"
-  | "blocks.featured-block";
+  | "blocks.featured-block"
+  | "blocks.blog-hero"
+  | "blocks.latest-article";
 
 interface Base<
   T extends ComponentType,
@@ -55,7 +57,9 @@ export type Block =
   | WhyChooseProps
   | EducationHeriProps
   | LatestCourseProps
-  | FeaturedCourseProps;
+  | FeaturedCourseProps
+  | BlogHeroProps
+  | LatestArticlesProps;
 
 export interface HeroSectionProps extends Base<"blocks.hero-section"> {
   heading: string;
@@ -212,4 +216,20 @@ export interface FeaturedCourseProps extends Base<"blocks.featured-block"> {
     url: string;
     name: string;
   };
+}
+
+export interface BlogHeroProps extends Base<"blocks.blog-hero"> {
+  title: string;
+  description: string;
+  categories: {
+    id: number;
+    title: string;
+    slug: string;
+  }[];
+}
+
+export interface LatestArticlesProps extends Base<"blocks.latest-article"> {
+  title: string;
+  description: string;
+  allBlogs?: any[];
 }

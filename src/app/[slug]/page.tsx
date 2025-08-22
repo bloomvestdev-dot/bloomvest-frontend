@@ -23,8 +23,5 @@ export default async function page({ params }: PageProps) {
   const slug = (await params).slug;
   const { blocks, latestCourses } = await loader(slug);
 
-  console.log("Blocks:", blocks);
-  console.log("Latest Courses:", latestCourses);
-
   return <BlockRenderer blocks={blocks} latestCourses={latestCourses} />;
 }

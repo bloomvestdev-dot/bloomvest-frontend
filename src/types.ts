@@ -34,7 +34,8 @@ type ComponentType =
   | "blocks.latest-article"
   | "blocks.webinar-hero"
   | "blocks.upcoming-webinars"
-  | "blocks.archived-webinars";
+  | "blocks.archived-webinars"
+  | "blocks.contact-hero";
 
 interface Base<
   T extends ComponentType,
@@ -65,7 +66,8 @@ export type Block =
   | LatestArticlesProps
   | WebinarHeroProps
   | UpcomingWebinarsProps
-  | ArchivedWebinarsProps;
+  | ArchivedWebinarsProps
+  | ContactHeroProps;
 
 export interface HeroSectionProps extends Base<"blocks.hero-section"> {
   heading: string;
@@ -256,4 +258,9 @@ export interface ArchivedWebinarsProps
   title: string;
   description: string;
   webinars?: any[];
+}
+
+export interface ContactHeroProps extends Base<"blocks.contact-hero"> {
+  title: string;
+  description: string;
 }

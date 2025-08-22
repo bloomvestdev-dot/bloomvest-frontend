@@ -206,6 +206,9 @@ const pageBySlugQuery = (slug: string) =>
           "blocks.archived-webinars": {
             populate: true,
           },
+          "blocks.contact-hero": {
+            populate: true,
+          },
         },
       },
     },

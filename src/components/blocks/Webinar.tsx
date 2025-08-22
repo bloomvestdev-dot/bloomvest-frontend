@@ -2,6 +2,7 @@ import { WebinarProps } from "@/types";
 import React from "react";
 import { StrapiImage } from "../StrapiImage";
 import { FaPlus } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
 
 export default function Webinar({
   heading,
@@ -61,13 +62,19 @@ export default function Webinar({
         </div>
 
         {/* right card */}
-        <div className="col-span-4 w-full rounded-4xl overflow-hidden">
+        <div className="col-span-4 w-full   relative">
           <StrapiImage
             src={image?.url}
             alt={image?.name}
             width={1000}
             height={1000}
+            className="rounded-4xl"
           />{" "}
+          <div className="absolute bg-white rounded-full w-50 flex items-center justify-center h-50 top-75 inset-0 left-195">
+            <div className="bg-[#5CF297] rounded-full w-43 h-43 flex items-center jutify-center">
+              <FaPlay className="text-black mx-auto text-6xl" />
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -3,7 +3,6 @@ import React from "react";
 import { CiCalendar } from "react-icons/ci";
 import { IoTimeOutline } from "react-icons/io5";
 import { GoPeople } from "react-icons/go";
-import { Button } from "@/components/ui/button";
 import { FaArrowRight } from "react-icons/fa6";
 
 type Props = {

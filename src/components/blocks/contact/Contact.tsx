@@ -4,14 +4,13 @@ import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-type Props = {};
+
+import { messageAction } from "@/data/action";
 
 export default function Contact({ title, description }: ContactHeroProps) {
   const [experienceLevel, setExperienceLevel] = React.useState(
@@ -36,13 +35,14 @@ export default function Contact({ title, description }: ContactHeroProps) {
             </p>
 
             <div className="w-full ">
-              <form className="space-y-6 mt-8">
+              <form className="space-y-6 mt-8" action={messageAction}>
                 <div className="flex gap-6">
                   <div className="flex-1">
                     <label className="block text-left text-black font-medium mb-2">
                       Name
                     </label>
                     <input
+                      name="name"
                       type="text"
                       className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
@@ -52,6 +52,7 @@ export default function Contact({ title, description }: ContactHeroProps) {
                       Phone
                     </label>
                     <input
+                      name="phone"
                       type="text"
                       className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
@@ -63,6 +64,7 @@ export default function Contact({ title, description }: ContactHeroProps) {
                     Email
                   </label>
                   <input
+                    name="email"
                     type="email"
                     className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
@@ -73,6 +75,7 @@ export default function Contact({ title, description }: ContactHeroProps) {
                     Subject
                   </label>
                   <input
+                    name="subject"
                     type="text"
                     className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
@@ -83,6 +86,7 @@ export default function Contact({ title, description }: ContactHeroProps) {
                     Message
                   </label>
                   <textarea
+                    name="message"
                     rows={6}
                     className="w-full px-4 py-3 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   ></textarea>
@@ -119,6 +123,7 @@ export default function Contact({ title, description }: ContactHeroProps) {
                       Name
                     </label>
                     <input
+                      name="name"
                       type="text"
                       className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
@@ -128,6 +133,7 @@ export default function Contact({ title, description }: ContactHeroProps) {
                       Phone
                     </label>
                     <input
+                      name="phone"
                       type="text"
                       className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
@@ -139,6 +145,7 @@ export default function Contact({ title, description }: ContactHeroProps) {
                     Email
                   </label>
                   <input
+                    name="email"
                     type="email"
                     className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />

@@ -16,6 +16,7 @@ import WebinarHero from "./blocks/webinars/WebinarHero";
 import UpcomingWebinars from "./blocks/webinars/UpcomingWebinars";
 import ArchivedWebinar from "./blocks/webinars/ArchivedWebinar";
 import Contact from "./blocks/contact/Contact";
+import ExpertArticle from "./blocks/ExpertArticle";
 
 function blockRenderer(
   block: Block,
@@ -69,7 +70,8 @@ function blockRenderer(
       return <ArchivedWebinar {...block} key={index} webinars={webinars} />;
     case "blocks.contact-hero":
       return <Contact {...block} key={index} />;
-
+    case "blocks.expert-article":
+      return <ExpertArticle {...block} key={index} />;
     default:
       return null;
   }

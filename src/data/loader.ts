@@ -59,6 +59,16 @@ const homePageQuery = qs.stringify({
             },
           },
         },
+        "blocks.expert-article": {
+          populate: {
+            cta: true,
+            card: {
+              populate: {
+                cta: true,
+              },
+            },
+          },
+        },
       },
     },
   },

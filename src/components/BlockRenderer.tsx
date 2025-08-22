@@ -12,12 +12,16 @@ import LatestCourse from "./blocks/education/LatestCourse";
 import FeaturedCourses from "./blocks/education/FeaturedCourses";
 import BlogHero from "./blocks/blogs/BlogHero";
 import LatestArticles from "./blocks/blogs/LatestArticles";
+import WebinarHero from "./blocks/webinars/WebinarHero";
+import UpcomingWebinars from "./blocks/webinars/UpcomingWebinars";
+import ArchivedWebinar from "./blocks/webinars/ArchivedWebinar";
 
 function blockRenderer(
   block: Block,
   index: number,
   latestCourses: any[],
-  allBlogs?: any[]
+  allBlogs?: any[],
+  webinars?: any[]
 ) {
   switch (block.__component) {
     case "blocks.hero-section":
@@ -56,6 +60,13 @@ function blockRenderer(
       return <BlogHero {...block} key={index} />;
     case "blocks.latest-article":
       return <LatestArticles {...block} key={index} allBlogs={allBlogs} />;
+    case "blocks.webinar-hero":
+      return <WebinarHero {...block} key={index} />;
+    case "blocks.upcoming-webinars":
+      return <UpcomingWebinars {...block} key={index} webinars={webinars} />;
+
+    case "blocks.archived-webinars":
+      return <ArchivedWebinar {...block} key={index} webinars={webinars} />;
     default:
       return null;
   }
@@ -65,12 +76,14 @@ export function BlockRenderer({
   blocks,
   latestCourses = [],
   allBlogs,
+  webinars,
 }: {
   blocks: Block[];
   latestCourses?: any[];
   allBlogs?: any[];
+  webinars?: any[];
 }) {
   return blocks.map((block, index) =>
-    blockRenderer(block, index, latestCourses, allBlogs)
+    blockRenderer(block, index, latestCourses, allBlogs, webinars)
   );
 }

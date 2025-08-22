@@ -31,7 +31,10 @@ type ComponentType =
   | "blocks.latest-course"
   | "blocks.featured-block"
   | "blocks.blog-hero"
-  | "blocks.latest-article";
+  | "blocks.latest-article"
+  | "blocks.webinar-hero"
+  | "blocks.upcoming-webinars"
+  | "blocks.archived-webinars";
 
 interface Base<
   T extends ComponentType,
@@ -59,7 +62,10 @@ export type Block =
   | LatestCourseProps
   | FeaturedCourseProps
   | BlogHeroProps
-  | LatestArticlesProps;
+  | LatestArticlesProps
+  | WebinarHeroProps
+  | UpcomingWebinarsProps
+  | ArchivedWebinarsProps;
 
 export interface HeroSectionProps extends Base<"blocks.hero-section"> {
   heading: string;
@@ -232,4 +238,22 @@ export interface LatestArticlesProps extends Base<"blocks.latest-article"> {
   title: string;
   description: string;
   allBlogs?: any[];
+}
+
+export interface WebinarHeroProps extends Base<"blocks.webinar-hero"> {
+  title: string;
+  description: string;
+}
+
+export interface UpcomingWebinarsProps
+  extends Base<"blocks.upcoming-webinars"> {
+  title: string;
+  description: string;
+}
+
+export interface ArchivedWebinarsProps
+  extends Base<"blocks.archived-webinars"> {
+  title: string;
+  description: string;
+  webinars?: any[];
 }

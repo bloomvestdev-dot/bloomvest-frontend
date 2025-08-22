@@ -197,6 +197,15 @@ const pageBySlugQuery = (slug: string) =>
           "blocks.latest-article": {
             populate: true,
           },
+          "blocks.webinar-hero": {
+            populate: true,
+          },
+          "blocks.upcoming-webinars": {
+            populate: true,
+          },
+          "blocks.archived-webinars": {
+            populate: true,
+          },
         },
       },
     },
@@ -249,5 +258,30 @@ export async function getBlogs() {
   const url = new URL(path, BASE_URL);
 
   url.search = allBlogsQuery;
+  return await fetchAPI(url.href, { method: "GET" });
+}
+
+const allWebinarsQuery = qs.stringify({
+  sort: ["createdAt:desc"],
+  populate: {
+    webinar: {
+      populate: {
+        cta: {
+          populate: {
+            button: true,
+          },
+        },
+        speakers: true,
+      },
+    },
+  },
+});
+
+export async function getWebinars() {
+  const path = "/api/webinars";
+  const BASE_URL = getStrapiURL();
+  const url = new URL(path, BASE_URL);
+
+  url.search = allWebinarsQuery;
   return await fetchAPI(url.href, { method: "GET" });
 }

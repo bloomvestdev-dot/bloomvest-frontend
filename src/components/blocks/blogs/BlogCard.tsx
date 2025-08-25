@@ -1,8 +1,10 @@
 import { StrapiImage } from "@/components/StrapiImage";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import React from "react";
 import { CiCalendarDate } from "react-icons/ci";
 import { FaArrowRight } from "react-icons/fa6";
+// import { useLanguage } from "@/context/LanguageContext";
 
 type BlogProps = {
   blog: {
@@ -21,6 +23,7 @@ type BlogProps = {
         name: string;
       };
     };
+    slug: string;
   };
 };
 export default function BlogCard({ blog }: BlogProps) {
@@ -35,21 +38,15 @@ export default function BlogCard({ blog }: BlogProps) {
     image,
   } = blog.blog;
 
+  const { slug } = blog;
+  // const { t } = useLanguage();
+
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
 
-  const limitedDescription = (text: string, limit: number) => {
-    const words = text.split(" ");
-    if (words.length > limit) {
-      return words.slice(0, limit).join(" ") + "...";
-    }
-    return text;
-  };
-
-  const shortDescription = limitedDescription(description, 15);
   return (
     <div className="col-span-1">
       <div className="shadow-md border border-gray-200  rounded-2xl px-5 py-5 flex flex-col gap-8 h-full">
@@ -79,9 +76,11 @@ export default function BlogCard({ blog }: BlogProps) {
 
         <div className="flex items-center justify-between text-sm font-medium text-gray-500 mt-auto">
           <p className="">{readTime}</p>
-          <p className="flex items-center gap-1 cursor-pointer ">
-            Read More <FaArrowRight />
-          </p>
+          <Link href={`/blogs/${slug}`}>
+            <p className="flex items-center gap-1 cursor-pointer ">
+              Read More <FaArrowRight />
+            </p>
+          </Link>
         </div>
       </div>
     </div>

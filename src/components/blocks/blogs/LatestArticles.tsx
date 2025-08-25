@@ -3,14 +3,32 @@ import { LatestArticlesProps } from "@/types";
 import React, { useState } from "react";
 import BlogCard from "./BlogCard";
 import { Button } from "@/components/ui/button";
+import { useBlogStore } from "@/store/blogStore";
 
 export default function LatestArticles({
   title,
   description,
-  allBlogs,
 }: LatestArticlesProps) {
+  const { allBlogs, searchTerm, activeCategory } = useBlogStore();
   const [visibleBlogs, setVisibleBlogs] = useState(6);
-  const blogsLength = allBlogs?.length || 0;
+
+  const filteredBlogs = allBlogs?.filter((blog) => {
+    const blogData = blog?.blog;
+    if (!blogData || !blogData.title) {
+      return false;
+    }
+
+    const titleMatches = blogData.title
+      .toLowerCase()
+      .includes(searchTerm?.toLowerCase() || "");
+    const categoryMatches =
+      activeCategory === "All" ||
+      blogData.category?.toLowerCase() === activeCategory?.toLowerCase();
+
+    return titleMatches && categoryMatches;
+  });
+
+  const blogsLength = filteredBlogs?.length || 0;
 
   const handleLoadMore = () => {
     setVisibleBlogs((prev) => prev + 3);
@@ -24,8 +42,8 @@ export default function LatestArticles({
       </div>
 
       <div className="grid grid-cols-3 gap-6 mt-10">
-        {allBlogs &&
-          allBlogs
+        {filteredBlogs &&
+          filteredBlogs
             .slice(0, visibleBlogs)
             .map((blog) => <BlogCard blog={blog} key={blog.id} />)}
       </div>

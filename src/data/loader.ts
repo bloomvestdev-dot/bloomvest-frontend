@@ -298,3 +298,27 @@ export async function getWebinars() {
   url.search = allWebinarsQuery;
   return await fetchAPI(url.href, { method: "GET" });
 }
+
+export async function getContentBySlug(slug: string) {
+  const path = "/api/blogs";
+  const BASE_URL = getStrapiURL();
+  const url = new URL(path, BASE_URL);
+  url.search = qs.stringify({
+    filters: {
+      slug: {
+        $eq: slug,
+      },
+    },
+    populate: {
+      blog: {
+        populate: {
+          image: {
+            fields: ["url", "name"],
+          },
+        },
+      },
+    },
+  });
+
+  return fetchAPI(url.href, { method: "GET" });
+}

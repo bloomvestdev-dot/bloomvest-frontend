@@ -45,13 +45,11 @@ function blockRenderer(
     case "blocks.education-hero":
       return <EducationHero {...block} key={index} />;
     case "blocks.latest-course":
-      // filter
       const Courses = latestCourses.filter(
         (course) => course.courseCard.featuredCourse === false
       );
       return <LatestCourse {...block} courses={Courses} key={index} />;
     case "blocks.featured-block":
-      //filter
       const featuredCourses = latestCourses.filter(
         (course) => course.courseCard.featuredCourse === true
       );

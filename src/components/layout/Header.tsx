@@ -6,6 +6,12 @@ import Link from "next/link";
 import { CiGlobe } from "react-icons/ci";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 export interface ImageProps {
   id: number;
@@ -46,10 +52,18 @@ export default function Header({ data }: HeaderProps) {
         })}
       </div>
 
-      <div className="flex items-center gap-2 border-1 border-black p-2 rounded-full cursor-pointer">
-        <CiGlobe />
-        <p className="text-sm">English</p>
-      </div>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <div className="flex items-center gap-2 border border-black p-2 rounded-full cursor-pointer">
+            <CiGlobe />
+            <p className="text-sm">English</p>
+          </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-40">
+          <DropdownMenuItem>English</DropdownMenuItem>
+          <DropdownMenuItem>Farsi</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 }

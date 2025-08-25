@@ -1,27 +1,32 @@
+"use client";
+
 import { BlockRenderer } from "@/components/BlockRenderer";
-import { getBlogs, getCourses, getPageBySlug } from "@/data/loader";
-import { notFound } from "next/navigation";
-import React from "react";
+import { useBlogStore } from "@/store/blogStore";
+import React, { useEffect } from "react";
 
-async function loader(slug: string) {
-  const [pageData, blogData] = await Promise.all([
-    getPageBySlug("blogs"),
-    getBlogs(),
-  ]);
+export default function BlogRoute() {
+  const { blocks, allBlogs, categories, isLoading, error, fetchBlogData } =
+    useBlogStore();
 
-  const page = pageData.data[0];
-  if (!page) notFound();
+  useEffect(() => {
+    fetchBlogData();
+  }, [fetchBlogData]);
 
-  return { blocks: page.blocks, allBlogs: blogData.data };
-}
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen text-2xl">
+        Loading blogs...
+      </div>
+    );
+  }
 
-interface PageProps {
-  params: Promise<{ slug: string }>;
-}
-
-export default async function BlogRoute({ params }: PageProps) {
-  const slug = (await params).slug;
-  const { blocks, allBlogs } = await loader(slug);
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen text-red-500 text-2xl">
+        Error: {error}
+      </div>
+    );
+  }
 
   return <BlockRenderer blocks={blocks} allBlogs={allBlogs} />;
 }

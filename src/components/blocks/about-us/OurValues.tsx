@@ -1,6 +1,5 @@
 import { StrapiImage } from "@/components/StrapiImage";
 import { OurValuesProps } from "@/types";
-import { console } from "inspector";
 import React from "react";
 
 export default function OurValues({

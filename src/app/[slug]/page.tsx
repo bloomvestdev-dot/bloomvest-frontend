@@ -15,12 +15,8 @@ async function loader(slug: string) {
   return { blocks: page.blocks, latestCourses: coursesData.data };
 }
 
-interface PageProps {
-  params: Promise<{ slug: string }>;
-}
-
-export default async function page({ params }: PageProps) {
-  const { slug } = await params;
+export default async function Page({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const { blocks, latestCourses } = await loader(slug);
 
   return <BlockRenderer blocks={blocks} latestCourses={latestCourses} />;

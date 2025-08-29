@@ -2,84 +2,87 @@ import { fetchAPI } from "@/utils/fetch-api";
 import { getStrapiURL } from "@/utils/get-strapi-url";
 import qs from "qs";
 
-const homePageQuery = qs.stringify({
-  populate: {
-    blocks: {
-      on: {
-        "blocks.service-section": {
-          populate: {
-            cards: true,
-            background: {
-              fields: ["url", "name"],
-            },
-          },
-        },
-        "blocks.hero-section": {
-          populate: {
-            cta: true,
-            logos: {
-              populate: {
-                image: {
-                  fields: ["url", "name"],
-                },
+const homePageQuery = () =>
+  qs.stringify({
+    populate: {
+      blocks: {
+        on: {
+          "blocks.service-section": {
+            populate: {
+              cards: true,
+              background: {
+                fields: ["url", "name"],
               },
             },
-            imageOne: {
-              fields: ["url", "name"],
-            },
-            imageTwo: {
-              fields: ["url", "name"],
-            },
-            imageThree: {
-              fields: ["url", "name"],
-            },
           },
-        },
-        "blocks.our-story": {
-          populate: {
-            image: {
-              fields: ["url", "name"],
-            },
-          },
-        },
-        "blocks.webinar": {
-          populate: {
-            card: {
-              populate: {
-                avatar: {
-                  fields: ["url", "name"],
-                },
-                backgroud: {
-                  fields: ["url", "name"],
+          "blocks.hero-section": {
+            populate: {
+              cta: true,
+              logos: {
+                populate: {
+                  image: {
+                    fields: ["url", "name"],
+                  },
                 },
               },
-            },
-            image: {
-              fields: ["url", "name"],
+              imageOne: {
+                fields: ["url", "name"],
+              },
+              imageTwo: {
+                fields: ["url", "name"],
+              },
+              imageThree: {
+                fields: ["url", "name"],
+              },
             },
           },
-        },
-        "blocks.expert-article": {
-          populate: {
-            cta: true,
-            card: {
-              populate: {
-                cta: true,
+          "blocks.our-story": {
+            populate: {
+              image: {
+                fields: ["url", "name"],
+              },
+            },
+          },
+          "blocks.webinar": {
+            populate: {
+              card: {
+                populate: {
+                  avatar: {
+                    fields: ["url", "name"],
+                  },
+                  backgroud: {
+                    fields: ["url", "name"],
+                  },
+                },
+              },
+              image: {
+                fields: ["url", "name"],
+              },
+            },
+          },
+          "blocks.expert-article": {
+            populate: {
+              cta: true,
+              card: {
+                populate: {
+                  cta: true,
+                },
               },
             },
           },
         },
       },
     },
-  },
-});
+  });
 
 export async function getHomepageData() {
   const path = "/api/home-page";
   const BASE_URL = getStrapiURL();
   const url = new URL(path, BASE_URL);
 
-  url.search = homePageQuery;
+  url.search = homePageQuery();
+
+  console.log("from home-page-query: ", url.href);
 
   return await fetchAPI(url.href, { method: "GET" });
 }

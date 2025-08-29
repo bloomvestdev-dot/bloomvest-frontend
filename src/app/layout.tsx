@@ -3,6 +3,7 @@ import "./globals.css";
 import { getGlobalSettings } from "@/data/loader";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: "Bloovest",
@@ -22,13 +23,15 @@ export default async function RootLayout({
 }>) {
   const { header, footer } = await loader();
   return (
-    <html lang="en">
-      <body className={` antialiased`}>
-        {" "}
-        <Header data={header} />
-        {children}
-        <Footer data={footer} />
-      </body>
-    </html>
+    <LanguageProvider>
+      <html lang="fa">
+        <body className={` antialiased`}>
+          {" "}
+          <Header data={header} />
+          {children}
+          <Footer data={footer} />
+        </body>
+      </html>
+    </LanguageProvider>
   );
 }

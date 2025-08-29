@@ -12,6 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { useLanguage } from "@/context/LanguageContext"; // Import the useLanguage hook
 
 export interface ImageProps {
   id: number;
@@ -30,6 +31,7 @@ interface HeaderProps {
 export default function Header({ data }: HeaderProps) {
   const { logo, navigation } = data;
   const pathname = usePathname();
+  const { language, toggleLanguage } = useLanguage(); // Use the language hook
 
   return (
     <div className="mx-auto w-full px-10 py-8 flex items-center justify-between top-0 relative z-10">
@@ -56,12 +58,13 @@ export default function Header({ data }: HeaderProps) {
         <DropdownMenuTrigger asChild>
           <div className="flex items-center gap-2 border border-black p-2 rounded-full cursor-pointer">
             <CiGlobe />
-            <p className="text-sm">English</p>
+            <p className="text-sm">{language === "en" ? "English" : "فارسی"}</p>
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-40">
-          <DropdownMenuItem>English</DropdownMenuItem>
-          <DropdownMenuItem>Farsi</DropdownMenuItem>
+          <DropdownMenuItem onClick={toggleLanguage}>
+            {language === "en" ? "Farsi" : "English"}
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

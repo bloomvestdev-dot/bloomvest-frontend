@@ -1,17 +1,11 @@
-import { BlockRenderer } from "@/components/BlockRenderer";
-import { getHomepageData } from "@/data/loader";
+// src/app/page.tsx
+import HomePageContent from "@/components/HomePageContent";
+import { LanguageProvider } from "@/context/LanguageContext";
 
-async function loader() {
-  const data = await getHomepageData();
-  if (!data) {
-    throw new Error("Failed to fetch homepage data");
-  }
-  return { ...data.data };
-}
-
-export default async function HomeRoute() {
-  const data = await loader();
-  const blocks = data?.blocks || [];
-
-  return <BlockRenderer blocks={blocks} />;
+export default function HomeRoute() {
+  return (
+    <LanguageProvider>
+      <HomePageContent />
+    </LanguageProvider>
+  );
 }

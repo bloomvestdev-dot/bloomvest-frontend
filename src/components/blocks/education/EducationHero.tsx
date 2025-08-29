@@ -17,7 +17,7 @@ export default function EducationHero({
         height={1080}
         className="w-full h-screen object-cover object-top opacity-75"
       />
-      <div className="bg-black w-full h-[829px] absolute -mt-32 inset-0 opacity-40"></div>
+      <div className="bg-black w-full h-[863px] absolute -mt-32 inset-0 opacity-40"></div>
       <div className="absolute inset-0 flex gap-3 flex-col items-center justify-center text-white z-5">
         <h1 className="text-6xl font-bold">{title}</h1>
         <p className="text-2xl font-semibold">{description}</p>

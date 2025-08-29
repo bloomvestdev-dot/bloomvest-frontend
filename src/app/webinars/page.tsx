@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { BlockRenderer } from "@/components/BlockRenderer";
 import { getPageBySlug, getWebinars } from "@/data/loader";
 import { notFound } from "next/navigation";

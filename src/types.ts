@@ -37,7 +37,8 @@ type ComponentType =
   | "blocks.archived-webinars"
   | "blocks.contact-hero"
   | "blocks.expert-article"
-  | "blocks.service-hero";
+  | "blocks.service-hero"
+  | "blocks.testimonials";
 
 interface Base<
   T extends ComponentType,
@@ -71,7 +72,8 @@ export type Block =
   | ArchivedWebinarsProps
   | ContactHeroProps
   | ExpertArticleProps
-  | ServiceProps;
+  | ServiceProps
+  | TestimonialsPageProps;
 
 export interface HeroSectionProps extends Base<"blocks.hero-section"> {
   heading: string;
@@ -292,5 +294,32 @@ export interface ServiceProps extends Base<"blocks.service-hero"> {
     description: string;
     isFree: boolean;
     points: string;
+  }[];
+}
+
+export interface TestimonialsPageProps extends Base<"blocks.testimonials"> {
+  title: string;
+  description: string;
+  cta: {
+    id: number;
+    title: string;
+    button: {
+      id: string;
+      text: string;
+      href: string;
+      isExternal: boolean;
+    };
+  };
+  card: {
+    id: number;
+    profession: string;
+    description: string;
+    name: string;
+    image: {
+      id: number;
+      documentId: string;
+      url: string;
+      name: string;
+    };
   }[];
 }

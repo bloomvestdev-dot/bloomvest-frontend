@@ -15,6 +15,7 @@ export default function HomePageContent() {
       try {
         setLoading(true);
         const fetchedData = await getHomepageData();
+
         setData(fetchedData.data);
       } catch (e: any) {
         setError(e.message);

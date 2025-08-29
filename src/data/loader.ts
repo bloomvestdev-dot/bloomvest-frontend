@@ -70,6 +70,22 @@ const homePageQuery = () =>
               },
             },
           },
+          "blocks.testimonials": {
+            populate: {
+              cta: {
+                populate: {
+                  button: true,
+                },
+              },
+              card: {
+                populate: {
+                  image: {
+                    fields: ["url", "name"],
+                  },
+                },
+              },
+            },
+          },
         },
       },
     },

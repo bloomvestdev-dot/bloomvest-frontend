@@ -17,6 +17,7 @@ import UpcomingWebinars from "./blocks/webinars/UpcomingWebinars";
 import ArchivedWebinar from "./blocks/webinars/ArchivedWebinar";
 import Contact from "./blocks/contact/Contact";
 import ExpertArticle from "./blocks/ExpertArticle";
+import ServicesPage from "./services/ServicesPage";
 
 function blockRenderer(
   block: Block,
@@ -70,6 +71,8 @@ function blockRenderer(
       return <Contact {...block} key={index} />;
     case "blocks.expert-article":
       return <ExpertArticle {...block} key={index} />;
+    case "blocks.service-hero":
+      return <ServicesPage {...block} key={index} />;
     default:
       return null;
   }

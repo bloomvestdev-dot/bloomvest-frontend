@@ -36,7 +36,8 @@ type ComponentType =
   | "blocks.upcoming-webinars"
   | "blocks.archived-webinars"
   | "blocks.contact-hero"
-  | "blocks.expert-article";
+  | "blocks.expert-article"
+  | "blocks.service-hero";
 
 interface Base<
   T extends ComponentType,
@@ -69,7 +70,8 @@ export type Block =
   | UpcomingWebinarsProps
   | ArchivedWebinarsProps
   | ContactHeroProps
-  | ExpertArticleProps;
+  | ExpertArticleProps
+  | ServiceProps;
 
 export interface HeroSectionProps extends Base<"blocks.hero-section"> {
   heading: string;
@@ -278,5 +280,17 @@ export interface ExpertArticleProps extends Base<"blocks.expert-article"> {
     length: string;
     color?: string;
     cta?: LinkProps;
+  }[];
+}
+
+export interface ServiceProps extends Base<"blocks.service-hero"> {
+  title: string;
+  description: string;
+  card: {
+    id: number;
+    title: string;
+    description: string;
+    isFree: boolean;
+    points: string;
   }[];
 }

@@ -222,6 +222,11 @@ const pageBySlugQuery = (slug: string) =>
           "blocks.contact-hero": {
             populate: true,
           },
+          "blocks.service-hero": {
+            populate: {
+              card: true,
+            },
+          },
         },
       },
     },

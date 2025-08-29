@@ -20,7 +20,7 @@ export default async function WebinarRoute({
 }: {
   params: { slug: string };
 }) {
-  const { slug } = params; // ✅ no await needed
+  const { slug } = await params;
   const { blocks, webinars } = await loader(slug);
 
   console.log("Blocks:", blocks);

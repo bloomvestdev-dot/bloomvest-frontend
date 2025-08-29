@@ -15,11 +15,11 @@ async function loader(slug: string) {
   return { blocks: page.blocks, webinars: webinarData.data };
 }
 
-export default async function WebinarRoute({
-  params,
-}: {
-  params: { slug: string };
-}) {
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function WebinarRoute({ params }: PageProps) {
   const { slug } = await params;
   const { blocks, webinars } = await loader(slug);
 

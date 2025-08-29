@@ -6,14 +6,11 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export default async function BlogDetails({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function BlogDetails({ params }: PageProps) {
   const { slug } = await params;
   const { data } = await getContentBySlug(slug);
   const blog = data[0];
+
   if (!blog) notFound();
 
   return <BlogDetailsComponent blog={blog} />;

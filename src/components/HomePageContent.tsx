@@ -14,7 +14,7 @@ export default function HomePageContent() {
     async function fetchData() {
       try {
         setLoading(true);
-        const fetchedData = await getHomepageData(language);
+        const fetchedData = await getHomepageData();
         setData(fetchedData.data);
       } catch (e: any) {
         setError(e.message);

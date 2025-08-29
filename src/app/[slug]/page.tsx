@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { BlockRenderer } from "@/components/BlockRenderer";
 import { getCourses, getPageBySlug } from "@/data/loader";
 import { notFound } from "next/navigation";

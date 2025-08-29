@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { BlockRenderer } from "@/components/BlockRenderer";
 import { getPageBySlug, getWebinars } from "@/data/loader";
 import { notFound } from "next/navigation";
@@ -17,12 +15,12 @@ async function loader(slug: string) {
   return { blocks: page.blocks, webinars: webinarData.data };
 }
 
-interface PageProps {
-  params: Promise<{ slug: string }>;
-}
-
-export default async function WebinarRoute({ params }: PageProps) {
-  const slug = (await params).slug;
+export default async function WebinarRoute({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = params; // ✅ no await needed
   const { blocks, webinars } = await loader(slug);
 
   console.log("Blocks:", blocks);

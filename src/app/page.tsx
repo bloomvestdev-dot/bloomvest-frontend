@@ -1,4 +1,3 @@
-// src/app/page.tsx
 import HomePageContent from "@/components/HomePageContent";
 import { LanguageProvider } from "@/context/LanguageContext";
 

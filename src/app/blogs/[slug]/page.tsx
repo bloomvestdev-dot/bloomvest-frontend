@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import BlogDetailsComponent from "@/components/blocks/blogs/BlogDetailsComponent";
 import { getContentBySlug } from "@/data/loader";
 import { notFound } from "next/navigation";

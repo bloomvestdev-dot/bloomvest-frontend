@@ -16,11 +16,12 @@ async function loader(slug: string) {
 }
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export default async function page({ params }: PageProps) {
-  const { blocks, latestCourses } = await loader(params.slug);
+  const { slug } = await params;
+  const { blocks, latestCourses } = await loader(slug);
 
   return <BlockRenderer blocks={blocks} latestCourses={latestCourses} />;
 }

@@ -19,10 +19,10 @@ export default function OurStorySection({
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <div className="mx-auto w-full px-8 py-20">
-        <div className="flex items-center justify-center gap-20">
+      <div className="mx-auto w-full px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-20">
           <motion.div 
-            className=""
+            className="order-2 lg:order-1"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -33,19 +33,19 @@ export default function OurStorySection({
               alt={image?.name || "Stock market analysis"}
               width={500}
               height={500}
-              className=""
+              className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px]"
             />
           </motion.div>
 
           <motion.div 
-            className="space-y-20"
+            className="space-y-8 sm:space-y-12 md:space-y-16 lg:space-y-20 order-1 lg:order-2 text-center lg:text-left"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <motion.h2 
-              className="text-5xl font-bold text-black uppercase tracking-wide"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-black uppercase tracking-wide"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -64,7 +64,7 @@ export default function OurStorySection({
                 components={{
                   p: ({ node, ...props }) => (
                     <p
-                      className="mb-10 max-w-2xl text-lg leading-relaxed text-[#878C91]"
+                      className="mb-6 sm:mb-8 md:mb-10 max-w-xs sm:max-w-lg md:max-w-2xl text-base sm:text-lg leading-relaxed text-[#878C91]"
                       {...props}
                     />
                   ),

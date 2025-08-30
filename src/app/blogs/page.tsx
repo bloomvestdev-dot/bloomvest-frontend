@@ -2,6 +2,7 @@
 
 import { BlockRenderer } from "@/components/BlockRenderer";
 import { useBlogStore } from "@/store/blogStore";
+import Image from "next/image";
 import React, { useEffect } from "react";
 
 export default function BlogRoute() {
@@ -14,8 +15,16 @@ export default function BlogRoute() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen text-2xl">
-        Loading blogs...
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-pulse">
+          <Image
+            src="/icon.svg"
+            alt="Loading..."
+            width={64}
+            height={64}
+            className="animate-bounce"
+          />
+        </div>
       </div>
     );
   }

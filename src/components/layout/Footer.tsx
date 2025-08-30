@@ -77,8 +77,8 @@ export default function Footer({ data }: FooterProps) {
     <IoLocationSharp size={15} />,
   ];
   return (
-    <div className="mx-auto w-full px-10 py-12 flex flex-col gap-10 justify-between bg-[#FAFAFA]">
-      <div className="bg-black w-full relative rounded-2xl overflow-hidden">
+    <div className="mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-10 md:py-12 flex flex-col gap-6 sm:gap-8 md:gap-10 justify-between bg-[#FAFAFA]">
+      <div className="bg-black w-full relative rounded-xl sm:rounded-2xl overflow-hidden h-40 sm:h-48 md:h-56 lg:h-auto">
         <StrapiImage
           src={background.url}
           alt={background.name}
@@ -86,40 +86,43 @@ export default function Footer({ data }: FooterProps) {
           height={1300}
           className="object-cover w-full h-full"
         />
-        <div className="absolute inset-0 flex items-center justify-between p-10">
-          <h1 className="text-6xl text-white font-bold max-w-6xl">
+        <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 py-8 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 gap-4 sm:gap-6 lg:gap-0">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white font-bold max-w-xs sm:max-w-sm md:max-w-md lg:max-w-5xl xl:max-w-6xl text-center lg:text-left">
             {cta.title}
           </h1>
           <Link href={cta.button.href}>
-            <Button className="rounded-full bg-white hover:text-white cursor-pointer text-black font-bold text-lg p-7 space-x-4">
+            <Button className="rounded-full bg-white hover:text-white cursor-pointer text-black font-bold text-xs sm:text-sm md:text-base lg:text-lg p-3 sm:p-4 md:p-5 lg:p-6 xl:p-7 space-x-2 sm:space-x-3 md:space-x-4">
               {cta.button.text} <FaArrowRight />
             </Button>
           </Link>
         </div>
       </div>
 
-      <div className="grid grid-cols-6">
-        <div className="col-span-3 w-full p-5 flex flex-col items-start gap-5">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-0">
+        {/* Logo and Description */}
+        <div className="col-span-1 sm:col-span-2 lg:col-span-3 w-full p-3 sm:p-4 md:p-5 flex flex-col items-start gap-4 sm:gap-4 md:gap-5">
           <Link href="/" className="flex items-center gap-2">
             <StrapiImage
               src={logo.image.url}
               alt={logo.image.name}
               width={200}
               height={100}
-              className="object-contain mb-4"
+              className="object-contain mb-2 sm:mb-3 md:mb-4 w-32 sm:w-40 md:w-auto"
             />
           </Link>
-          <p className="text-[#9B9B9C] max-w-lg text-md">{description}</p>
+          <p className="text-[#9B9B9C] max-w-xs sm:max-w-sm md:max-w-lg text-[10px] sm:text-base md:text-md">
+            {description}
+          </p>
           <div className="">
-            <div className="flex gap-4 mt-4">
+            <div className="flex gap-3 sm:gap-4 mt-2 sm:mt-3 md:mt-4">
               {facebook && (
                 <Link
                   href={facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-white"
+                  className=" sm:p-3 rounded-full bg-white"
                 >
-                  <FaFacebook size={20} />
+                  <FaFacebook size={18} className="w-4 sm:w-5 sm:h-5" />
                 </Link>
               )}
               {twitter && (
@@ -127,9 +130,9 @@ export default function Footer({ data }: FooterProps) {
                   href={twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-white"
+                  className="sm:p-3 rounded-full bg-white"
                 >
-                  <FaTwitter size={20} />
+                  <FaTwitter size={18} className="w-4 sm:w-5 sm:h-5" />
                 </Link>
               )}
               {instagram && (
@@ -137,9 +140,9 @@ export default function Footer({ data }: FooterProps) {
                   href={instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-white"
+                  className=" sm:p-3 rounded-full bg-white"
                 >
-                  <FaInstagram size={20} />
+                  <FaInstagram size={18} className="sm:w-5 sm:h-5 w-4" />
                 </Link>
               )}
               {linkedin && (
@@ -147,25 +150,29 @@ export default function Footer({ data }: FooterProps) {
                   href={linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-white"
+                  className="sm:p-3 rounded-full bg-white"
                 >
-                  <FaLinkedin size={20} />
+                  <FaLinkedin size={18} className="sm:w-5 sm:h-5 w-4" />
                 </Link>
               )}
             </div>
           </div>
-          <p className="text-[#9B9B9C]">{rightsText}</p>
+          <p className="text-[#9B9B9C] text-sm sm:text-base hidden lg:block">
+            {rightsText}
+          </p>
         </div>
         <div className="col-span-1">
-          <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-          <ul className="space-y-6">
+          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
+            Quick Links
+          </h3>
+          <ul className="space-y-2 sm:space-y-6">
             {quickLinks.map((link) => (
               <li key={link.text}>
                 <Link
                   href={link.href}
                   target={link.isExternal ? "_blank" : "_self"}
                   rel={link.isExternal ? "noopener noreferrer" : undefined}
-                  className="text-[#9B9B9C] hover:text-black"
+                  className="text-[#9B9B9C] hover:text-black text-[10px] sm:text-base"
                 >
                   {link.text}
                 </Link>
@@ -174,15 +181,17 @@ export default function Footer({ data }: FooterProps) {
           </ul>
         </div>
         <div className="col-span-1">
-          <h3 className="text-lg font-semibold mb-4">Services</h3>
-          <ul className="space-y-6">
+          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
+            Services
+          </h3>
+          <ul className="space-y-2 sm:space-y-6">
             {services.map((service) => (
               <li key={service.text} className="flex items-center gap-2">
                 <Link
                   href={service.href}
                   target={service.isExternal ? "_blank" : "_self"}
                   rel={service.isExternal ? "noopener noreferrer" : undefined}
-                  className="text-[#9B9B9C] hover:text-black"
+                  className="text-[#9B9B9C] hover:text-black text-[10px] sm:text-base"
                 >
                   {service.text}
                 </Link>
@@ -191,8 +200,10 @@ export default function Footer({ data }: FooterProps) {
           </ul>
         </div>
         <div className="col-span-1">
-          <h3 className="text-lg font-semibold mb-4">Contacts</h3>
-          <ul className="space-y-6">
+          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
+            Contacts
+          </h3>
+          <ul className="space-y-2 sm:space-y-6">
             {contacts.map((contact, index) => (
               <li key={contact.text} className="inline-flex items-center gap-2">
                 <switch>{constactIcons[index]}</switch>
@@ -200,7 +211,7 @@ export default function Footer({ data }: FooterProps) {
                   href={contact.href}
                   target={contact.isExternal ? "_blank" : "_self"}
                   rel={contact.isExternal ? "noopener noreferrer" : undefined}
-                  className="text-[#9B9B9C] hover:text-black text-sm"
+                  className="text-[#9B9B9C] hover:text-black text-[10px] sm:text-sm"
                 >
                   {contact.text}
                 </Link>

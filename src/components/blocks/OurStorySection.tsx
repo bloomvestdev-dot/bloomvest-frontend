@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { OurStoryProps } from "@/types";
 import React from "react";
@@ -12,7 +12,7 @@ export default function OurStorySection({
   image,
 }: OurStoryProps) {
   return (
-    <motion.div 
+    <motion.div
       className="w-full bg-gray-100"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -21,7 +21,7 @@ export default function OurStorySection({
     >
       <div className="mx-auto w-full px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-20">
-          <motion.div 
+          <motion.div
             className="order-2 lg:order-1"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -33,18 +33,18 @@ export default function OurStorySection({
               alt={image?.name || "Stock market analysis"}
               width={500}
               height={500}
-              className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px]"
+              className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] rounded-4xl"
             />
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="space-y-8 sm:space-y-12 md:space-y-16 lg:space-y-20 order-1 lg:order-2 text-center lg:text-left"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <motion.h2 
+            <motion.h2
               className="text-3xl sm:text-4xl md:text-5xl font-bold text-black uppercase tracking-wide"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}

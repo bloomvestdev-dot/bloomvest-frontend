@@ -73,7 +73,7 @@ function blockRenderer(
     case "blocks.contact-hero":
       return <Contact {...block} key={index} />;
     case "blocks.expert-article":
-      return <ExpertArticle {...block} key={index} />;
+      return <ExpertArticle {...block} key={index} blogs={allBlogs} />;
     case "blocks.service-hero":
       return <ServicesPage {...block} key={index} />;
 

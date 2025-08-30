@@ -283,6 +283,7 @@ export interface ExpertArticleProps extends Base<"blocks.expert-article"> {
     color?: string;
     cta?: LinkProps;
   }[];
+  blogs?: any[] | undefined;
 }
 
 export interface ServiceProps extends Base<"blocks.service-hero"> {

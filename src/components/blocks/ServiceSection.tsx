@@ -1,6 +1,9 @@
+'use client';
+
 import { ServiceSectionProps } from "@/types";
 import React from "react";
 import { StrapiImage } from "../StrapiImage";
+import { motion } from "framer-motion";
 
 export default function ServiceSection({
   heading,
@@ -11,7 +14,13 @@ export default function ServiceSection({
   console.log("bg", background);
 
   return (
-    <div className="mx-auto w-full px-10 py-8">
+    <motion.div 
+      className="mx-auto w-full px-10 py-8"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <div className="relative w-full bg-black h-[602px] rounded-4xl overflow-hidden">
         <StrapiImage
           src={background?.url}
@@ -19,25 +28,79 @@ export default function ServiceSection({
           fill
         />
         <div className="absolute flex flex-col items-center justify-around gap-20 h-full py-20 px-10">
-          <div className="flex flex-col items-center justify-center w-full  gap-5">
-            <h1 className="text-white text-5xl font-semibold">{heading}</h1>
-            <p className="text-white text-xl">{description}</p>
-          </div>
-          <div className="flex items-center gap-5">
+          <motion.div 
+            className="flex flex-col items-center justify-center w-full gap-5"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <motion.h1 
+              className="text-white text-5xl font-semibold"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            >
+              {heading}
+            </motion.h1>
+            <motion.p 
+              className="text-white text-xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
+              {description}
+            </motion.p>
+          </motion.div>
+          <motion.div 
+            className="flex items-center gap-5"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             {cards?.map((card, index) => (
-              <div
+              <motion.div
                 className="bg-white/5 rounded-4xl p-10 space-y-6"
                 key={index}
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.1 * index + 0.6, 
+                  ease: "easeOut" 
+                }}
+                whileHover={{ 
+                  scale: 1.02, 
+                  transition: { duration: 0.2 } 
+                }}
               >
-                <p className="text-white font-semibold text-2xl">
+                <motion.p 
+                  className="text-white font-semibold text-2xl"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: 0.1 * index + 0.8 }}
+                >
                   {card.title}
-                </p>
-                <p className="text-white">{card.description}</p>
-              </div>
+                </motion.p>
+                <motion.p 
+                  className="text-white"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: 0.1 * index + 1.0 }}
+                >
+                  {card.description}
+                </motion.p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

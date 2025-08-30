@@ -3,6 +3,7 @@ import { BlockRenderer } from "@/components/BlockRenderer";
 import { getBlogs, getHomepageData } from "@/data/loader";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import Image from "next/image";
 
 export default function HomePageContent() {
   const { language } = useLanguage();
@@ -32,8 +33,16 @@ export default function HomePageContent() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen text-2xl">
-        Loading...
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-pulse">
+          <Image
+            src="/icon.svg"
+            alt="Loading..."
+            width={64}
+            height={64}
+            className="animate-bounce"
+          />
+        </div>
       </div>
     );
   }

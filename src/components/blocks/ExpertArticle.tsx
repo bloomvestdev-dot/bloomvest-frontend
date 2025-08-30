@@ -16,21 +16,21 @@ export default function ExpertArticle({
   console.log("expert article: ", blogs);
   return (
     <motion.div 
-      className="mx-auto w-full px-10 py-12 mt-5 flex flex-col gap-20 bg-[#FAFAFA]"
+      className="mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-10 md:py-11 lg:py-12 mt-5 flex flex-col gap-10 sm:gap-14 md:gap-16 lg:gap-20 bg-[#FAFAFA]"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <motion.div 
-        className="flex items-center justify-between gap-10"
+        className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 sm:gap-8 md:gap-9 lg:gap-10"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <motion.h1 
-          className="text-5xl max-w-2xl font-semibold"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-2xl font-semibold"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -46,7 +46,7 @@ export default function ExpertArticle({
           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
         >
           <motion.p 
-            className="max-w-xl text-[#878C91]"
+            className="max-w-xl text-[#878C91] text-sm sm:text-base lg:text-base"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -61,7 +61,7 @@ export default function ExpertArticle({
             transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
           >
             <Link href={`${cta?.href}`}>
-              <button className="border border-black p-4 font-medium rounded-full text-xs mt-5 hover:bg-black hover:text-white transition-colors cursor-pointer">
+              <button className="border border-black p-3 sm:p-3 md:p-4 lg:p-4 font-medium rounded-full text-xs mt-3 sm:mt-4 md:mt-4 lg:mt-5 hover:bg-black hover:text-white transition-colors cursor-pointer">
                 {cta?.text}
               </button>
             </Link>
@@ -70,7 +70,7 @@ export default function ExpertArticle({
       </motion.div>
 
       <motion.div 
-        className="grid grid-cols-3 gap-5"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-4 md:gap-5 lg:gap-5"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -78,7 +78,7 @@ export default function ExpertArticle({
       >
         {blogs?.slice(0, 3).map((item, index) => (
           <motion.div
-            className="bg-white rounded-4xl border border-gray-200 py-6 px-8 flex flex-col justify-between h-full gap-6"
+            className="bg-white rounded-2xl sm:rounded-3xl md:rounded-4xl lg:rounded-4xl border border-gray-200 py-4 sm:py-5 md:py-6 lg:py-6 px-6 sm:px-7 md:px-8 lg:px-8 flex flex-col justify-between h-full gap-4 sm:gap-5 md:gap-6 lg:gap-6"
             key={item.id}
             initial={{ opacity: 0, y: 40, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -118,7 +118,7 @@ export default function ExpertArticle({
               </motion.p>
             </motion.div>
             <motion.h1 
-              className="text-2xl max-w-xs font-semibold"
+              className="text-lg sm:text-xl md:text-xl lg:text-2xl max-w-xs font-semibold"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -134,7 +134,7 @@ export default function ExpertArticle({
               transition={{ duration: 0.5, delay: 0.1 * index + 0.9 }}
             >
               <motion.p 
-                className="max-w-xs text-[#878C91]"
+                className="max-w-xs text-[#878C91] text-sm sm:text-sm md:text-sm lg:text-sm"
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -150,7 +150,7 @@ export default function ExpertArticle({
                 }}
               >
                 <Link href={`/blogs/${item.slug}`}>
-                  <button className="py-3 px-5 bg-white border border-black rounded-full cursor-pointer hover:bg-black hover:text-white transition-colors flex items-center gap-2">
+                  <button className="py-2 sm:py-2 md:py-3 lg:py-3 px-4 sm:px-4 md:px-5 lg:px-5 bg-white border border-black rounded-full cursor-pointer hover:bg-black hover:text-white transition-colors flex items-center gap-2">
                     <FaArrowRight size={10} />
                   </button>
                 </Link>

@@ -1,7 +1,7 @@
 import React from "react";
 import { MdOutlineMenuBook } from "react-icons/md";
 import { HiOutlineVideoCamera } from "react-icons/hi2";
-import { Button } from "@/components/ui/button";
+
 import { FaArrowRight } from "react-icons/fa6";
 
 type Props = {
@@ -30,7 +30,12 @@ export default function CourseCard({ course }: Props) {
   return (
     <div className="bg-white rounded-3xl p-10 col-span-1 space-y-8">
       <div className="flex items-center justify-between">
-        <IconComponent className="text-lg text-gray-700" />
+        <div className="flex items-center gap-2">
+          <IconComponent className="text-lg text-gray-700" />
+          <span className="text-sm text-gray-700">
+            {icon === "Book" ? "Book" : "Video"}
+          </span>
+        </div>
         <p className="text-xs text-[#878C91]">{relatedCourseCount}</p>
       </div>
       <div className="">

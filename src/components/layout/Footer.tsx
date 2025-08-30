@@ -90,9 +90,11 @@ export default function Footer({ data }: FooterProps) {
           <h1 className="text-6xl text-white font-bold max-w-6xl">
             {cta.title}
           </h1>
-          <Button className="rounded-full bg-white text-black font-bold text-lg p-7 space-x-4">
-            {cta.button.text} <FaArrowRight />
-          </Button>
+          <Link href={cta.button.href}>
+            <Button className="rounded-full bg-white hover:text-white cursor-pointer text-black font-bold text-lg p-7 space-x-4">
+              {cta.button.text} <FaArrowRight />
+            </Button>
+          </Link>
         </div>
       </div>
 

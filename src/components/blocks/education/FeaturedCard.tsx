@@ -22,7 +22,6 @@ export default function FeaturedCard({ course, background }: Props) {
   const imageUrl = getStrapiMedia(background.url);
 
   return (
-    // 1. Make the card responsive: 1 on mobile, 2 on medium screens, 3 on large screens.
     <CarouselItem className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
       <div className="p-1">
         <Card

@@ -1,6 +1,8 @@
+'use client';
 import { StrapiImage } from "@/components/StrapiImage";
 import { OurValuesProps } from "@/types";
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function OurValues({
   title,
@@ -10,7 +12,13 @@ export default function OurValues({
 }: OurValuesProps) {
   console.log("icon", icons[1]);
   return (
-    <div className="mx-auto w-full lg:px-10 lg:py-16 px-4">
+    <motion.div 
+      className="mx-auto w-full lg:px-10 lg:py-16 px-4"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="bg-black lg:h-full h-screen lg:rounded-4xl rounded-2xl overflow-hidden relative w-full">
         <StrapiImage
           src={background.url}
@@ -20,15 +28,26 @@ export default function OurValues({
           className="lg:w-full lg:h-full h-full object-cover"
         />
         <div className="absolute inset-0 flex flex-col justify-around items-center p-10">
-          <h1 className="lg:text-6xl text-md mb-2 lg:mb-0 text-white font-bold">
+          <motion.h1 
+            className="lg:text-6xl text-md mb-2 lg:mb-0 text-white font-bold"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             {title}
-          </h1>
+          </motion.h1>
           <div className="flex justify-center lg:flex-row flex-col mt-2 items-center gap-4 lg:gap-10 ">
             {cards.length > 0 &&
               cards.map((card, index) => (
-                <div
+                <motion.div
                   className="flex flex-col justify-center lg:items-center p-5 gap-2 lg:gap-3 bg-white/4 lg:p-10 rounded-4xl"
                   key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
                 >
                   <StrapiImage
                     src={icons[index].url}
@@ -43,11 +62,11 @@ export default function OurValues({
                   <p className="text-white lg:text-center max-w-xs text-xs lg:text-base lg:max-w-xs">
                     {card.description}
                   </p>
-                </div>
+                </motion.div>
               ))}
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

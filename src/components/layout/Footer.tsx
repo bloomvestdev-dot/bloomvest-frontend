@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import { Button } from "../ui/button";
 import { FaArrowRight } from "react-icons/fa6";
@@ -10,6 +11,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { MdCall } from "react-icons/md";
 import { MdOutlineForwardToInbox } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
+import { motion } from "framer-motion";
 
 interface FooterProps {
   data: {
@@ -87,9 +89,15 @@ export default function Footer({ data }: FooterProps) {
           className="object-cover w-full h-full"
         />
         <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 py-8 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 gap-4 sm:gap-6 lg:gap-0">
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white font-bold max-w-xs sm:max-w-sm md:max-w-md lg:max-w-5xl xl:max-w-6xl text-center lg:text-left">
+          <motion.h1 
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white font-bold max-w-xs sm:max-w-sm md:max-w-md lg:max-w-5xl xl:max-w-6xl text-center lg:text-left"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             {cta.title}
-          </h1>
+          </motion.h1>
           <Link href={cta.button.href}>
             <Button className="rounded-full bg-white hover:text-white cursor-pointer text-black font-bold text-xs sm:text-sm md:text-base lg:text-lg p-3 sm:p-4 md:p-5 lg:p-6 xl:p-7 space-x-2 sm:space-x-3 md:space-x-4">
               {cta.button.text} <FaArrowRight />

@@ -35,19 +35,34 @@ export default function Header({ data }: HeaderProps) {
   const { language, toggleLanguage } = useLanguage(); // Use the language hook
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Check if we're on the contact page
+  const isContactPage = pathname.includes('contact');
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
-    <div className="mx-auto w-full lg:px-10 lg:py-8 px-5 py-2 flex items-center justify-between top-0 relative z-10">
+    <div className={cn(
+      "mx-auto w-full lg:px-10 lg:py-8 px-5 py-2 flex items-center justify-between top-0 relative z-10",
+      isContactPage && "text-white"
+    )}>
       <Link href="/">
-        <StrapiImage
-          src={logo?.image?.url}
-          alt={logo?.image.name || "Stock market analysis"}
-          width={100}
-          height={100}
-        />
+        {isContactPage ? (
+          <img
+            src="/logo-white.svg"
+            alt={logo?.image.name || "Stock market analysis"}
+            width={100}
+            height={100}
+          />
+        ) : (
+          <StrapiImage
+            src={logo?.image?.url}
+            alt={logo?.image.name || "Stock market analysis"}
+            width={100}
+            height={100}
+          />
+        )}
       </Link>
 
       {/* Desktop Navigation - Keep exactly as is */}
@@ -66,7 +81,10 @@ export default function Header({ data }: HeaderProps) {
       <div className="hidden lg:block">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <div className="flex items-center gap-2 lg:border lg:border-black p-2 rounded-full cursor-pointer">
+            <div className={cn(
+              "flex items-center gap-2 lg:border p-2 rounded-full cursor-pointer",
+              isContactPage ? "lg:border-white" : "lg:border-black"
+            )}>
               <CiGlobe />
               <p className="lg:text-sm hidden lg:inline-block">
                 {language === "en" ? "English" : "فارسی"}
@@ -86,7 +104,10 @@ export default function Header({ data }: HeaderProps) {
         {/* Mobile Language Selector */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <div className="flex items-center  lg:border lg:border-black p-2 rounded-full cursor-pointer">
+            <div className={cn(
+              "flex items-center p-2 rounded-full cursor-pointer",
+              isContactPage ? "border-white" : "lg:border lg:border-black"
+            )}>
               <CiGlobe size={20} />
               <p className="lg:text-sm hidden lg:inline-block">
                 {language === "en" ? "English" : "فارسی"}

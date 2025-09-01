@@ -269,6 +269,18 @@ export interface ArchivedWebinarsProps
 export interface ContactHeroProps extends Base<"blocks.contact-hero"> {
   title: string;
   description: string;
+  subtitle: string;
+  register: {
+    title: string;
+    point: {
+      title: string;
+    }[];
+  };
+  bg: {
+    id: number;
+    url: string;
+    name: string;
+  };
 }
 
 export interface ExpertArticleProps extends Base<"blocks.expert-article"> {

@@ -236,8 +236,18 @@ const pageBySlugQuery = (slug: string) =>
             populate: true,
           },
           "blocks.contact-hero": {
-            populate: true,
+            populate: {
+              register: {
+                populate: {
+                  point: true,
+                },
+              },
+              bg: {
+                fields: ["url", "name"],
+              },
+            },
           },
+
           "blocks.service-hero": {
             populate: {
               card: true,

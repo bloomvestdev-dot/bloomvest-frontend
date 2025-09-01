@@ -1,26 +1,22 @@
 "use client";
 import { BlockRenderer } from "@/components/BlockRenderer";
-import { getBlogs, getHomepageData } from "@/data/loader";
+import { getBlogs } from "@/data/loader";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import Image from "next/image";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
-export default function HomePageContent() {
+export default function HomePageContent({ data }: { data: any }) {
   const { language } = useLanguage();
-  const [data, setData] = useState<any>(null);
   const [allBlogs, setAllBlogs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchBlogs() {
       try {
         setLoading(true);
-        const [fetchedHomepageData, fetchedBlogData] = await Promise.all([
-          getHomepageData(),
-          getBlogs(),
-        ]);
-        setData(fetchedHomepageData.data);
+        const fetchedBlogData = await getBlogs(language);
         setAllBlogs(fetchedBlogData.data);
       } catch (e: any) {
         setError(e.message);
@@ -28,7 +24,7 @@ export default function HomePageContent() {
         setLoading(false);
       }
     }
-    fetchData();
+    fetchBlogs();
   }, [language]);
 
   if (loading) {
@@ -57,7 +53,9 @@ export default function HomePageContent() {
 
   return (
     <div dir={language === "fa" ? "rtl" : "ltr"}>
-      <BlockRenderer blocks={data?.blocks || []} allBlogs={allBlogs} />
+      <ErrorBoundary>
+        <BlockRenderer blocks={data?.blocks || []} allBlogs={allBlogs} />
+      </ErrorBoundary>
     </div>
   );
 }

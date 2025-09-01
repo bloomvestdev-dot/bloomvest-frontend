@@ -47,7 +47,7 @@ export default function Header({ data }: HeaderProps) {
       "mx-auto w-full lg:px-10 lg:py-8 px-5 py-2 flex items-center justify-between top-0 relative z-10",
       isContactPage && "text-white"
     )}>
-      <Link href="/">
+      <Link href={`/${language}`}>
         {isContactPage ? (
           <img
             src="/logo-white.svg"
@@ -68,9 +68,9 @@ export default function Header({ data }: HeaderProps) {
       {/* Desktop Navigation - Keep exactly as is */}
       <div className="hidden lg:flex items-center gap-10">
         {navigation?.map((item, index) => {
-          const isActive = pathname === item.href;
+          const isActive = pathname === `/${language}${item.href}`;
           return (
-            <Link href={item.href} key={index}>
+            <Link href={`/${language}${item.href}`} key={index}>
               <p className={cn({ "font-bold": isActive })}>{item.text}</p>
             </Link>
           );
@@ -142,10 +142,10 @@ export default function Header({ data }: HeaderProps) {
             {/* Mobile Navigation */}
             <div className="space-y-4">
               {navigation?.map((item, index) => {
-                const isActive = pathname === item.href;
+                const isActive = pathname === `/${language}${item.href}`;
                 return (
                   <Link
-                    href={item.href}
+                    href={`/${language}${item.href}`}
                     key={index}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="block"

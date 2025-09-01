@@ -1,10 +1,6 @@
-import HomePageContent from "@/components/HomePageContent";
-import { LanguageProvider } from "@/context/LanguageContext";
+import { redirect } from "next/navigation";
 
-export default function HomeRoute() {
-  return (
-    <LanguageProvider>
-      <HomePageContent />
-    </LanguageProvider>
-  );
+export default function RootPage() {
+  // Redirect to default language
+  redirect("/en");
 }

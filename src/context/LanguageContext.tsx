@@ -1,8 +1,9 @@
 // src/context/LanguageContext.tsx
 "use client";
 
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import React from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 // You can define your translations here or import them from a separate file.
 const translations = {
@@ -31,16 +32,31 @@ export const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined
 );
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<"en" | "fa">("en");
+export function LanguageProvider({
+  children,
+  initialLanguage,
+}: {
+  children: React.ReactNode;
+  initialLanguage: "en" | "fa";
+}) {
+  const [language, setLanguage] = useState(initialLanguage);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const toggleLanguage = () => {
-    setLanguage((prevLang) => (prevLang === "en" ? "fa" : "en"));
+    const newLang = language === "en" ? "fa" : "en";
+    setLanguage(newLang);
+    const newPath = pathname.replace(`/${language}`, `/${newLang}`);
+    router.push(newPath);
   };
 
   const t = (key: TranslationKeys) => {
     return translations[language][key] || key;
   };
+
+  useEffect(() => {
+    setLanguage(initialLanguage);
+  }, [initialLanguage]);
 
   const value = { language, toggleLanguage, t };
 

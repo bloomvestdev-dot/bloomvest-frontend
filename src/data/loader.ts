@@ -2,8 +2,9 @@ import { fetchAPI } from "@/utils/fetch-api";
 import { getStrapiURL } from "@/utils/get-strapi-url";
 import qs from "qs";
 
-const homePageQuery = () =>
+const homePageQuery = (locale: string) =>
   qs.stringify({
+    locale,
     populate: {
       blocks: {
         on: {
@@ -91,19 +92,20 @@ const homePageQuery = () =>
     },
   });
 
-export async function getHomepageData() {
+export async function getHomepageData(locale: string) {
   const path = "/api/home-page";
   const BASE_URL = getStrapiURL();
   const url = new URL(path, BASE_URL);
 
-  url.search = homePageQuery();
+  url.search = homePageQuery(locale);
 
   console.log("from home-page-query: ", url.href);
 
   return await fetchAPI(url.href, { method: "GET" });
 }
 
-const globalSettingQuery = qs.stringify({
+const globalSettingQuery = (locale: string) => qs.stringify({
+  locale,
   populate: {
     header: {
       populate: {
@@ -142,16 +144,17 @@ const globalSettingQuery = qs.stringify({
   },
 });
 
-export async function getGlobalSettings() {
+export async function getGlobalSettings(locale: string) {
   const path = "/api/global";
   const BASE_URL = getStrapiURL();
   const url = new URL(path, BASE_URL);
-  url.search = globalSettingQuery;
+  url.search = globalSettingQuery(locale);
   return fetchAPI(url.href, { method: "GET" });
 }
 
-const pageBySlugQuery = (slug: string) =>
+const pageBySlugQuery = (slug: string, locale: string) =>
   qs.stringify({
+    locale,
     filters: {
       slug: {
         $eq: slug,
@@ -258,20 +261,21 @@ const pageBySlugQuery = (slug: string) =>
     },
   });
 
-export async function getPageBySlug(slug: string) {
+export async function getPageBySlug(slug: string, locale: string) {
   const path = "/api/pages";
   const BASE_URL = getStrapiURL();
   const url = new URL(path, BASE_URL);
-  url.search = pageBySlugQuery(slug);
+  url.search = pageBySlugQuery(slug, locale);
   return await fetchAPI(url.href, { method: "GET" });
 }
 
-export async function getCourses() {
+export async function getCourses(locale: string) {
   const path = "/api/courses";
   const BASE_URL = getStrapiURL();
   const url = new URL(path, BASE_URL);
 
   url.search = qs.stringify({
+    locale,
     sort: "createdAt:desc",
     populate: {
       courseCard: {
@@ -285,7 +289,8 @@ export async function getCourses() {
   return await fetchAPI(url.href, { method: "GET" });
 }
 
-const allBlogsQuery = qs.stringify({
+const allBlogsQuery = (locale: string) => qs.stringify({
+  locale,
   sort: ["createdAt:desc"],
 
   populate: {
@@ -299,16 +304,17 @@ const allBlogsQuery = qs.stringify({
   },
 });
 
-export async function getBlogs() {
+export async function getBlogs(locale: string) {
   const path = "/api/blogs";
   const BASE_URL = getStrapiURL();
   const url = new URL(path, BASE_URL);
 
-  url.search = allBlogsQuery;
+  url.search = allBlogsQuery(locale);
   return await fetchAPI(url.href, { method: "GET" });
 }
 
-const allWebinarsQuery = qs.stringify({
+const allWebinarsQuery = (locale: string) => qs.stringify({
+  locale,
   sort: ["createdAt:desc"],
   populate: {
     webinar: {
@@ -324,20 +330,21 @@ const allWebinarsQuery = qs.stringify({
   },
 });
 
-export async function getWebinars() {
+export async function getWebinars(locale: string) {
   const path = "/api/webinars";
   const BASE_URL = getStrapiURL();
   const url = new URL(path, BASE_URL);
 
-  url.search = allWebinarsQuery;
+  url.search = allWebinarsQuery(locale);
   return await fetchAPI(url.href, { method: "GET" });
 }
 
-export async function getContentBySlug(slug: string) {
+export async function getContentBySlug(slug: string, locale: string) {
   const path = "/api/blogs";
   const BASE_URL = getStrapiURL();
   const url = new URL(path, BASE_URL);
   url.search = qs.stringify({
+    locale,
     filters: {
       slug: {
         $eq: slug,

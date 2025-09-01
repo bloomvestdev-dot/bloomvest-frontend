@@ -9,7 +9,7 @@ interface BlogState {
   activeCategory: string;
   isLoading: boolean;
   error: string | null;
-  fetchBlogData: () => Promise<void>;
+  fetchBlogData: (locale: string) => Promise<void>;
   setSearchTerm: (term: string) => void;
   setActiveCategory: (category: string) => void;
 }
@@ -23,12 +23,12 @@ export const useBlogStore = create<BlogState>((set) => ({
   isLoading: true,
   error: null,
 
-  fetchBlogData: async () => {
+  fetchBlogData: async (locale: string) => {
     set({ isLoading: true, error: null });
     try {
       const [pageData, blogData] = await Promise.all([
-        getPageBySlug("blogs"),
-        getBlogs(),
+        getPageBySlug("blogs", locale),
+        getBlogs(locale),
       ]);
 
       const page = pageData.data[0];

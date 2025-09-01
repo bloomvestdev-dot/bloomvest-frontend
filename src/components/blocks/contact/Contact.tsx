@@ -18,19 +18,19 @@ export default function Contact({
   bg,
 }: ContactHeroProps) {
   return (
-    <div className="mx-auto w-full bg-white space-y-10 flex flex-col justify-center">
-      <div className="">
+    <div className="mx-auto w-full bg-white space-y-6 sm:space-y-8 md:space-y-10 flex flex-col justify-center">
+      <div className="relative">
         <StrapiImage
           src={bg?.url}
           alt={bg?.name || "Education Background"}
           width={1920}
           height={100}
-          className="w-full h-full object-cover object-top -mt-25 "
+          className="lg:w-full lg:h-full h-[600px] object-cover object-top -mt-25"
         />
-        <div className="bg-black/75 w-full h-[740px] absolute -mt-32 inset-0 "></div>
+        <div className="bg-black/75 w-full h-[630px] md:h-[640px]  absolute -mt-32 inset-0"></div>
         <div className="absolute inset-0 flex gap-3 flex-col items-center justify-center text-white z-5 px-4 sm:px-6 md:px-8 lg:px-0 pt-32 sm:pt-20 md:pt-12 lg:pt-0 lg:gap-20">
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center leading-tight px-4"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -39,7 +39,7 @@ export default function Contact({
             {title}
           </motion.h1>
           <motion.p
-            className="text-lg sm:text-xl md:text-2xl font-medium text-center max-w-4xl"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-center max-w-4xl px-4"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -49,7 +49,7 @@ export default function Contact({
           </motion.p>
 
           <motion.p
-            className="text-lg sm:text-xl md:text-2xl font-medium text-center max-w-4xl"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-center max-w-4xl px-4"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

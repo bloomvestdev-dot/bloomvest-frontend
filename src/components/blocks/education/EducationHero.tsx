@@ -17,9 +17,9 @@ export default function EducationHero({
         alt={background?.name || "Education Background"}
         width={1920}
         height={1080}
-        className="w-full h-screen object-cover object-top opacity-75"
+        className="w-full h-auto min-h-screen object-cover object-top opacity-75"
       />
-      <div className="bg-black w-full h-[863px] absolute -mt-32 inset-0 opacity-30"></div>
+      <div className="bg-black w-full h-full absolute top-0 left-0 right-0 bottom-0 opacity-30"></div>
       <div className="absolute inset-0 flex gap-3 flex-col items-center justify-center text-white z-5 px-4 sm:px-6 md:px-8 lg:px-0 pt-32 sm:pt-20 md:pt-12 lg:pt-0">
         <motion.h1
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center leading-tight"

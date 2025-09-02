@@ -1,3 +1,5 @@
+"use client";
+
 import { ServiceProps } from "@/types";
 import React from "react";
 import { FaCheckCircle, FaCrown } from "react-icons/fa";

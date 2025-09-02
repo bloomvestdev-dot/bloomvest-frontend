@@ -22,7 +22,7 @@ export default function FeaturedCard({ course, background }: Props) {
   const imageUrl = getStrapiMedia(background.url);
 
   return (
-    <CarouselItem className="pl-2 sm:pl-3 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+    <CarouselItem className="pl-2 sm:pl-3 md:pl-4 lg:pl-6 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3">
       <div className="p-1">
         <Card
           className="overflow-hidden bg-black bg-cover bg-center rounded-4xl"

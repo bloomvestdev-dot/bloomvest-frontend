@@ -7,7 +7,7 @@ import Image from "next/image";
 import ErrorBoundary from "@/components/ErrorBoundary";
 
 export default function HomePageContent({ data }: { data: any }) {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [allBlogs, setAllBlogs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -33,7 +33,7 @@ export default function HomePageContent({ data }: { data: any }) {
         <div className="animate-pulse">
           <Image
             src="/icon.svg"
-            alt="Loading..."
+            alt={t("loading")}
             width={64}
             height={64}
             className="animate-bounce"
@@ -46,7 +46,7 @@ export default function HomePageContent({ data }: { data: any }) {
   if (error) {
     return (
       <div className="flex justify-center items-center h-screen text-red-500 text-2xl">
-        Error: {error}
+        {t("error")}: {error}
       </div>
     );
   }

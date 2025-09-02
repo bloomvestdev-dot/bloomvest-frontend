@@ -4,6 +4,7 @@ import React from "react";
 import { Search } from "lucide-react";
 import { useBlogStore } from "@/store/blogStore";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function BlogHero({
   title,
@@ -11,6 +12,7 @@ export default function BlogHero({
   categories,
 }: BlogHeroProps) {
   const { setSearchTerm, setActiveCategory, activeCategory } = useBlogStore();
+  const { t } = useLanguage();
   return (
     <motion.div 
       className="w-full bg-white py-8 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-4"
@@ -54,7 +56,7 @@ export default function BlogHero({
             <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 sm:w-5 sm:h-5" />
             <input
               type="text"
-              placeholder="Search Matches"
+              placeholder={t("search-matches")}
               className="w-full pl-10 sm:pl-12 pr-4 sm:pr-6 py-3 sm:py-4 text-gray-700 bg-gray-50 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -76,7 +78,7 @@ export default function BlogHero({
             transition={{ duration: 0.5, delay: 0.6 }}
             whileHover={{ scale: 1.05 }}
           >
-            All
+            {t("all")}
           </motion.button>
           {categories.map((category, index) => (
             <motion.button

@@ -4,14 +4,19 @@ import React, { useState } from "react";
 import BlogCard from "./BlogCard";
 import { Button } from "@/components/ui/button";
 import { useBlogStore } from "@/store/blogStore";
+import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 
 export default function LatestArticles({
   title,
   description,
-}: LatestArticlesProps) {
-  const { allBlogs, searchTerm, activeCategory } = useBlogStore();
+  allBlogs,
+}: LatestArticlesProps & { allBlogs?: any[] }) {
+  const { searchTerm, activeCategory } = useBlogStore();
+  const { t } = useLanguage();
   const [visibleBlogs, setVisibleBlogs] = useState(6);
+
+
 
   const filteredBlogs = allBlogs?.filter((blog) => {
     const blogData = blog?.blog;
@@ -23,13 +28,17 @@ export default function LatestArticles({
       .toLowerCase()
       .includes(searchTerm?.toLowerCase() || "");
     const categoryMatches =
-      activeCategory === "All" ||
+      activeCategory === "All" || 
+      activeCategory === t("all") ||
       blogData.category?.toLowerCase() === activeCategory?.toLowerCase();
 
     return titleMatches && categoryMatches;
   });
 
   const blogsLength = filteredBlogs?.length || 0;
+  
+  console.log("LatestArticles - filteredBlogs:", filteredBlogs);
+  console.log("LatestArticles - blogsLength:", blogsLength);
 
   const handleLoadMore = () => {
     setVisibleBlogs((prev) => prev + 3);
@@ -65,7 +74,7 @@ export default function LatestArticles({
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-6 sm:mt-8 md:mt-9 lg:mt-10">
-        {filteredBlogs &&
+        {filteredBlogs && filteredBlogs.length > 0 ? (
           filteredBlogs
             .slice(0, visibleBlogs)
             .map((blog, index) => (
@@ -79,7 +88,14 @@ export default function LatestArticles({
               >
                 <BlogCard blog={blog} />
               </motion.div>
-            ))}
+            ))
+        ) : (
+          <div className="col-span-full text-center py-8">
+            <p className="text-gray-500 text-lg">
+              {allBlogs ? t("no-results") : "Loading blogs..."}
+            </p>
+          </div>
+        )}
       </div>
 
       {visibleBlogs < blogsLength && (
@@ -93,7 +109,7 @@ export default function LatestArticles({
             onClick={handleLoadMore}
             className="w-40 sm:w-44 md:w-48 lg:w-50 mx-auto text-sm sm:text-base md:text-md cursor-pointer p-4 sm:p-5 md:p-6 bg-black rounded-full"
           >
-            Load More
+            {t("load-more")}
           </Button>
         </motion.div>
       )}

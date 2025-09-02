@@ -2,12 +2,15 @@ import { ServiceProps } from "@/types";
 import React from "react";
 import { FaCheckCircle, FaCrown } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ServicesPage({
   title,
   description,
   card,
 }: ServiceProps) {
+  const { t } = useLanguage();
+  
   return (
     <div className="mx-auto w-full px-6 md:px-10 py-16 bg-gray-50">
       {/* Hero Section */}
@@ -41,8 +44,7 @@ export default function ServicesPage({
               </h3>
               {service.isFree && (
                 <div className="flex items-center gap-2 bg-[#5CF297] text-black px-3 py-1.5 rounded-full text-sm font-semibold">
-                 
-                  Free
+                  {t("free")}
                 </div>
               )}
             </div>

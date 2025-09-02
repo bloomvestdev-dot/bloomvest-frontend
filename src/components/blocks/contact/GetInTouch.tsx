@@ -1,17 +1,18 @@
 import React from "react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 type Props = {};
 
 export default function GetInTouch({}: Props) {
+  const { t } = useLanguage();
   return (
     <div className="bg-[#FAFAFA] px-4 sm:px-6 md:px-8 lg:px-10 space-y-6 sm:space-y-8 md:space-y-10">
       {/* Heading */}
       <div className="flex flex-col items-center p-6 sm:p-8 md:p-10 gap-3 sm:gap-4 md:gap-5 text-center">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold">Get in Touch</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold">{t("get-in-touch")}</h1>
         <p className="text-[#878C91] max-w-xl text-sm sm:text-base">
-          Have questions about our services or ready to start your trading
-          journey? We're here to help.
+          {t("get-in-touch-description")}
         </p>
       </div>
 
@@ -28,11 +29,10 @@ export default function GetInTouch({}: Props) {
         {/* Overlay Form */}
         <div className="relative z-10 text-center space-y-3 sm:space-y-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white">
-            Send us a Message
+            {t("send-message")}
           </h1>
           <p className="text-[#878C91] text-xs sm:text-sm max-w-md mx-auto">
-            Fill out the form below and we'll get back to you as soon as
-            possible.
+            {t("send-message-description")}
           </p>
 
           {/* Form */}
@@ -40,7 +40,7 @@ export default function GetInTouch({}: Props) {
             <div className="flex flex-col md:flex-row gap-4 sm:gap-6">
               <div className="flex-1">
                 <label className="block text-white font-medium mb-2 text-sm sm:text-base">
-                  Name
+                  {t("name")}
                 </label>
                 <input
                   name="name"
@@ -50,7 +50,7 @@ export default function GetInTouch({}: Props) {
               </div>
               <div className="flex-1">
                 <label className="block text-white font-medium mb-2 text-sm sm:text-base">
-                  Phone
+                  {t("phone")}
                 </label>
                 <input
                   name="phone"
@@ -61,7 +61,7 @@ export default function GetInTouch({}: Props) {
             </div>
 
             <div>
-              <label className="block text-white font-medium mb-2 text-sm sm:text-base">Email</label>
+              <label className="block text-white font-medium mb-2 text-sm sm:text-base">{t("email")}</label>
               <input
                 name="email"
                 type="email"
@@ -71,7 +71,7 @@ export default function GetInTouch({}: Props) {
 
             <div>
               <label className="block text-white font-medium mb-2 text-sm sm:text-base">
-                Subject
+                {t("subject")}
               </label>
               <input
                 name="subject"
@@ -82,7 +82,7 @@ export default function GetInTouch({}: Props) {
 
             <div>
               <label className="block text-white font-medium mb-2 text-sm sm:text-base">
-                Message
+                {t("message")}
               </label>
               <textarea
                 name="message"
@@ -96,7 +96,7 @@ export default function GetInTouch({}: Props) {
                 type="submit"
                 className="bg-white text-black px-6 sm:px-8 py-2 sm:py-3 rounded-full hover:bg-gray-200 transition-colors duration-200 text-sm sm:text-base"
               >
-                Submit
+                {t("submit")}
               </button>
             </div>
           </form>

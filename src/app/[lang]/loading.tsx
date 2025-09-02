@@ -1,7 +1,12 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Loading() {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="text-center">
@@ -18,8 +23,8 @@ export default function Loading() {
 
         {/* Loading Text */}
         <div className="space-y-2">
-          <h2 className="text-xl font-semibold text-gray-900">Loading...</h2>
-          <p className="text-gray-600">Please wait while we load the content</p>
+          <h2 className="text-xl font-semibold text-gray-900">{t("loading")}</h2>
+          <p className="text-gray-600">{t("please-wait")}</p>
         </div>
 
         {/* Loading Animation */}

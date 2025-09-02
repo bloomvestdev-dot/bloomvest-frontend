@@ -11,6 +11,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import { ArchivedWebinarsProps } from "@/types";
 import ArchivedWebinarCard from "./ArchivedWebinarCard";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 type Props = {
   webinars: any[];
@@ -28,6 +29,7 @@ export default function ArchivedWebinar({
   );
 
   const [visibleWebinar, setVisibleWebinar] = useState(2);
+  const { t } = useLanguage();
 
   const webinarsLength = webinars?.length || 0;
 
@@ -90,7 +92,7 @@ export default function ArchivedWebinar({
             onClick={handleLoadMore}
             className="w-40 sm:w-44 md:w-48 lg:w-50 mx-auto text-sm sm:text-base md:text-md cursor-pointer p-4 sm:p-5 md:p-6 bg-black rounded-full"
           >
-            Load More
+            {t("load-more")}
           </Button>
         </motion.div>
       )}

@@ -3,10 +3,12 @@ import { LuNotebookPen } from "react-icons/lu";
 import { FaRegHandshake } from "react-icons/fa6";
 import { PiNetwork } from "react-icons/pi";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 type Props = {};
 
 export default function Steps({}: Props) {
+  const { t } = useLanguage();
   return (
     <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 md:gap-10 items-center">
       <div className="flex flex-col items-center justify-center gap-2 sm:gap-3">
@@ -14,7 +16,7 @@ export default function Steps({}: Props) {
           <LuNotebookPen size={20} className="sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-[30px] lg:h-[30px]" />
         </div>
         <p className="max-w-[8rem] text-center text-xs sm:text-sm">
-          Register On our website
+          {t("step-1-register")}
         </p>
       </div>
       <Image
@@ -29,7 +31,7 @@ export default function Steps({}: Props) {
           <FaRegHandshake size={20} className="sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-[30px] lg:h-[30px]" />
         </div>
         <p className="max-w-[8rem] text-center text-xs sm:text-sm">
-          Complete the Collaboration form
+          {t("step-2-form")}
         </p>
       </div>
       <Image
@@ -44,7 +46,7 @@ export default function Steps({}: Props) {
           <PiNetwork size={20} className="sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-[30px] lg:h-[30px]" />
         </div>
         <p className="max-w-[8rem] text-center text-xs sm:text-sm">
-          Get Connected for our team to reach you out
+          {t("step-3-connect")}
         </p>
       </div>
     </div>

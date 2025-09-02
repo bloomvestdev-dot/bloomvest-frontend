@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { CiCalendarDate } from "react-icons/ci";
 import { FaArrowRight } from "react-icons/fa6";
-// import { useLanguage } from "@/context/LanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 type BlogProps = {
   blog: {
@@ -39,7 +39,7 @@ export default function BlogCard({ blog }: BlogProps) {
   } = blog.blog;
 
   const { slug } = blog;
-  // const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
@@ -76,9 +76,9 @@ export default function BlogCard({ blog }: BlogProps) {
 
         <div className="flex items-center justify-between text-sm font-medium text-gray-500 mt-auto">
           <p className="">{readTime}</p>
-          <Link href={`/blogs/${slug}`}>
+          <Link href={`/${language}/blogs/${slug}`}>
             <p className="flex items-center gap-1 cursor-pointer ">
-              Read More <FaArrowRight />
+              {t("read-more")} <FaArrowRight />
             </p>
           </Link>
         </div>

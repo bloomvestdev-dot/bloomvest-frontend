@@ -6,24 +6,14 @@ import { useLanguage } from '@/context/LanguageContext';
 import Link from 'next/link';
 
 export default function NotFound() {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
-  const notFoundMessages = {
-    en: {
-      title: "404 - Page Not Found",
-      description: "Sorry, we couldn't find the page you're looking for.",
-      homeButton: "Go to Home",
-      backButton: "Go Back"
-    },
-    fa: {
-      title: "404 - صفحه یافت نشد",
-      description: "متأسفانه، صفحه‌ای که به دنبال آن هستید یافت نشد.",
-      homeButton: "برو به خانه",
-      backButton: "برگشت"
-    }
+  const messages = {
+    title: t("page-not-found"),
+    description: t("page-not-found-desc"),
+    homeButton: t("go-to-home"),
+    backButton: t("go-back")
   };
-
-  const messages = notFoundMessages[language];
 
   return (
     <div 

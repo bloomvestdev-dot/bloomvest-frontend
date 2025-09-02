@@ -17,24 +17,13 @@ export default function Error({ error, reset }: ErrorProps) {
     console.error('Application Error:', error);
   }, [error]);
 
-  const errorMessages = {
-    en: {
-      title: "Something went wrong!",
-      description: "We encountered an unexpected error. Please try again.",
-      retryButton: "Try again",
-      homeButton: "Go to Home",
-      errorDetails: "Error Details"
-    },
-    fa: {
-      title: "مشکلی پیش آمده است!",
-      description: "ما با خطای غیرمنتظره‌ای مواجه شدیم. لطفاً دوباره تلاش کنید.",
-      retryButton: "تلاش دوباره",
-      homeButton: "برو به خانه",
-      errorDetails: "جزئیات خطا"
-    }
+  const messages = {
+    title: t("something-went-wrong"),
+    description: t("unexpected-error"),
+    retryButton: t("try-again"),
+    homeButton: t("go-to-home"),
+    errorDetails: t("error-details")
   };
-
-  const messages = errorMessages[language];
 
   return (
     <div 

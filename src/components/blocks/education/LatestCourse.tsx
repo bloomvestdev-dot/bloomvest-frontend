@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import CourseCard from "./CourseCard";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function LatestCourse({
   title,
@@ -12,6 +13,7 @@ export default function LatestCourse({
   courses,
 }: LatestCourseProps & { courses: any[] }) {
   const [visibleCourses, setVisibleCourses] = useState(6);
+  const { t } = useLanguage();
 
   const coursesLength = courses.length;
 
@@ -74,7 +76,7 @@ export default function LatestCourse({
             onClick={handleLoadMore}
             className="w-40 sm:w-44 md:w-48 lg:w-50 mx-auto text-sm sm:text-base md:text-md cursor-pointer p-4 sm:p-5 md:p-6 bg-black rounded-full"
           >
-            Load More
+            {t("load-more")}
           </Button>
         </motion.div>
       )}

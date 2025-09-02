@@ -63,9 +63,9 @@ export default function BlogDetailsComponent({ blog }: Props) {
       <StrapiImage
         src={image.url}
         alt={image.name}
-        width={1000}
-        height={1000}
-        className="w-full h-full object-cover rounded-lg mt-10"
+        width={900}
+        height={600}
+        className="w-full max-w-8xl h-[500px] object-cover rounded-lg mt-10 mx-auto"
       />
 
       <div className="flex items-center justify-between text-sm">

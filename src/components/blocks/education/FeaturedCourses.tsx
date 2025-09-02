@@ -25,7 +25,7 @@ export default function FeaturedCourses({
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <div className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto">
+      <div className="flex flex-col items-center justify-center w-full mx-auto">
         <motion.h1 
           className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-center leading-tight px-4"
           initial={{ opacity: 0, y: 30 }}

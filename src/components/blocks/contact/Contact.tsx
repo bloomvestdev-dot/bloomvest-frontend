@@ -27,7 +27,7 @@ export default function Contact({
           height={100}
           className="lg:w-full lg:h-full h-[600px] object-cover object-top -mt-25"
         />
-        <div className="bg-black/75 w-full h-[630px] md:h-[640px]  absolute -mt-32 inset-0"></div>
+        <div className="bg-black/75 absolute inset-0 -mt-32"></div>
         <div className="absolute inset-0 flex gap-3 flex-col items-center justify-center text-white z-5 px-4 sm:px-6 md:px-8 lg:px-0 pt-32 sm:pt-20 md:pt-12 lg:pt-0 lg:gap-20">
           <motion.h1
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center leading-tight px-4"

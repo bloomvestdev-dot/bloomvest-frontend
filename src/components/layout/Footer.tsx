@@ -54,6 +54,8 @@ interface FooterProps {
       url: string;
       name: string;
     };
+    terms: string;
+    policy: string;
   };
 }
 
@@ -72,6 +74,8 @@ export default function Footer({ data }: FooterProps) {
     contacts,
     background,
   } = data;
+
+  console.log("footer data",data);
 
   const constactIcons = [
     <MdCall size={15} />,
@@ -165,9 +169,26 @@ export default function Footer({ data }: FooterProps) {
               )}
             </div>
           </div>
-          <p className="text-[#9B9B9C] text-sm sm:text-base hidden lg:block">
-            {rightsText}
-          </p>
+          <div className="hidden lg:block">
+            <p className="text-[#9B9B9C] text-sm sm:text-base mb-4">
+              {rightsText}
+            </p>
+            <div className="flex gap-4 text-sm">
+              <Link 
+                href="/terms" 
+                className="text-[#9B9B9C] hover:text-black transition-colors"
+              >
+                Terms & Conditions
+              </Link>
+              <span className="text-[#9B9B9C]">|</span>
+              <Link 
+                href="/privacy" 
+                className="text-[#9B9B9C] hover:text-black transition-colors"
+              >
+                Privacy Policy
+              </Link>
+            </div>
+          </div>
         </div>
         <div className="col-span-1">
           <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
@@ -227,6 +248,28 @@ export default function Footer({ data }: FooterProps) {
             ))}
           </ul>
         </div>
+      </div>
+
+      {/* Mobile Terms & Privacy Links */}
+      <div className="lg:hidden mt-8 pt-6 border-t border-gray-200">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
+          <Link 
+            href="/terms" 
+            className="text-[#9B9B9C] hover:text-black transition-colors"
+          >
+            Terms & Conditions
+          </Link>
+          <span className="text-[#9B9B9C] hidden sm:inline">|</span>
+          <Link 
+            href="/privacy" 
+            className="text-[#9B9B9C] hover:text-black transition-colors"
+          >
+            Privacy Policy
+          </Link>
+        </div>
+        <p className="text-[#9B9B9C] text-xs text-center mt-4">
+          {rightsText}
+        </p>
       </div>
     </div>
   );

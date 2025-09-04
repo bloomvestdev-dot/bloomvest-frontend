@@ -66,11 +66,65 @@ export default function BrokerForm({ register }: Props) {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
-    console.log("Dropdown Values:", dropdownValues);
-    // Handle form submission here
+
+    const data = {
+      ...formData,
+      ...dropdownValues,
+    };
+
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Handle successful submission (e.g., show a success message)
+        console.log('Form submitted successfully!');
+        alert('Form submitted successfully! We will get back to you soon.');
+        
+        // Reset form after successful submission
+        setFormData({
+          name: "",
+          age: "",
+          phone: "",
+          email: "",
+          cityCountry: "",
+          occupation: "",
+          financialExpectation: "",
+          socialMediaAccounts: "",
+        });
+        setDropdownValues({
+          familiarWithMarkets: t("select-option"),
+          tradingExperience: t("select-option"),
+          riskManagement: t("select-option"),
+          tradingTerms: t("select-option"),
+          interest: t("select-option"),
+          motivation: t("select-option"),
+          marketingExperience: t("select-option"),
+          hoursPerDay: t("select-option"),
+          incomeImportance: t("select-option"),
+          startEarning: t("select-option"),
+          currentIncome: t("select-option"),
+          trainingResponse: t("select-option"),
+          introduceMethod: t("select-option"),
+        });
+      } else {
+        // Handle submission error (e.g., show an error message)
+        console.error('Form submission failed.');
+        alert('Form submission failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('An error occurred while submitting the form:', error);
+      alert('An error occurred while submitting the form. Please try again.');
+    }
   };
 
   const DropdownQuestion = ({

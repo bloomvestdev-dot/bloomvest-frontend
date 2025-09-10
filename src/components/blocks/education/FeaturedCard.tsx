@@ -7,6 +7,7 @@ import { MdOutlineMenuBook } from "react-icons/md";
 import React from "react";
 import CourseCard from "./CourseCard";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type Props = {
   background: {
@@ -67,9 +68,15 @@ export default function FeaturedCard({ course, background }: Props) {
                   </span>
                 </span>
               </div>
-              <Button className="mx-auto w-full p-4 sm:p-6 md:p-7 lg:p-8 rounded-full bg-white text-black font-bold text-sm sm:text-lg md:text-xl lg:text-2xl hover:text-white mt-6 sm:mt-8 md:mt-10">
-                {course.courseCard.cta.text}
-              </Button>
+              <Link
+                href={course.courseCard.cta.href}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <Button className="mx-auto w-full p-4 sm:p-6 md:p-7 lg:p-8 rounded-full bg-white text-black font-bold text-sm sm:text-lg md:text-xl lg:text-2xl hover:text-white mt-6 sm:mt-8 md:mt-10">
+                  {course.courseCard.cta.text}
+                </Button>
+              </Link>
             </div>
           </CardContent>
         </Card>

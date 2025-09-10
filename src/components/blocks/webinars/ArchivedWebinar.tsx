@@ -25,7 +25,7 @@ export default function ArchivedWebinar({
   webinars?: any[];
 }) {
   const archivedWebinars = webinars?.filter(
-    (webinar) => webinar.webinar?.isArchived === false
+    (webinar) => webinar.webinar?.isArchived === true
   );
 
   const [visibleWebinar, setVisibleWebinar] = useState(2);
@@ -37,7 +37,7 @@ export default function ArchivedWebinar({
     setVisibleWebinar((prev) => prev + 3);
   };
   return (
-    <motion.div 
+    <motion.div
       className="mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-10 md:py-11 lg:py-12 bg-white space-y-6 sm:space-y-8 md:space-y-9 lg:space-y-10 flex flex-col justify-center"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -45,7 +45,7 @@ export default function ArchivedWebinar({
       transition={{ duration: 0.6 }}
     >
       <div className="text-center space-y-3 sm:space-y-4">
-        <motion.h1 
+        <motion.h1
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ export default function ArchivedWebinar({
         >
           {title}
         </motion.h1>
-        <motion.p 
+        <motion.p
           className="text-[#878C91] text-base sm:text-lg md:text-xl leading-relaxed px-2"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

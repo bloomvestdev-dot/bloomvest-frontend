@@ -56,9 +56,7 @@ const homePageQuery = (locale: string) =>
                   },
                 },
               },
-              image: {
-                fields: ["url", "name"],
-              },
+              image: true,
             },
           },
           "blocks.expert-article": {

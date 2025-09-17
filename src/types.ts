@@ -136,6 +136,11 @@ export interface WebinarProps extends Base<"blocks.webinar"> {
     documentId: string;
     url: string;
     name: string;
+    formats: {
+      large: {
+        url: string;
+      };
+    };
   };
 }
 

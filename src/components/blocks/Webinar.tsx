@@ -171,14 +171,14 @@ export default function Webinar({
           transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
         >
           <StrapiImage
-            src={image?.url}
+            src={image?.formats?.large?.url}
             alt={image?.name}
             width={1000}
             height={1000}
-            className="rounded-2xl sm:rounded-3xl md:rounded-4xl lg:rounded-4xl"
+            className="rounded-2xl  lg:h-[470px] sm:rounded-3xl md:rounded-4xl lg:rounded-4xl"
           />{" "}
           <motion.div
-            className="absolute bg-white rounded-full lg:w-50 w-20 h-20 flex items-center justify-center top-25 left-60 lg:h-50 lg:top-75 inset-0 lg:left-195"
+            className="absolute bg-white rounded-full lg:w-50 w-20 h-20 flex items-center justify-center top-50 left-76 lg:h-50 lg:top-75 inset-0 lg:left-195"
             initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             viewport={{ once: true, margin: "-100px" }}

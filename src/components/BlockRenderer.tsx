@@ -1,8 +1,9 @@
 import { Block } from "@/types";
+import dynamic from "next/dynamic";
 import HeroSection from "./blocks/HeroSection";
 import ServiceSection from "./blocks/ServiceSection";
-import OurStorySection from "./blocks/OurStorySection";
-import Webinar from "./blocks/Webinar";
+const OurStorySection = dynamic(() => import("./blocks/OurStorySection"));
+const Webinar = dynamic(() => import("./blocks/Webinar"));
 import AboutHeroSection from "./blocks/about-us/AboutHeroSection";
 import MissionVision from "./blocks/about-us/MissionVision";
 import OurValues from "./blocks/about-us/OurValues";
@@ -16,9 +17,9 @@ import WebinarHero from "./blocks/webinars/WebinarHero";
 import UpcomingWebinars from "./blocks/webinars/UpcomingWebinars";
 import ArchivedWebinar from "./blocks/webinars/ArchivedWebinar";
 import Contact from "./blocks/contact/Contact";
-import ExpertArticle from "./blocks/ExpertArticle";
+const ExpertArticle = dynamic(() => import("./blocks/ExpertArticle"));
 import ServicesPage from "./services/ServicesPage";
-import Testimonials from "./blocks/Testimonials";
+const Testimonials = dynamic(() => import("./blocks/Testimonials"));
 
 function blockRenderer(
   block: Block,

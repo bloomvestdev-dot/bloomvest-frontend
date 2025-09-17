@@ -96,53 +96,50 @@ export async function getHomepageData(locale: string) {
   const path = "/api/home-page";
   const BASE_URL = getStrapiURL();
   const url = new URL(path, BASE_URL);
-
   url.search = homePageQuery(locale);
-
-  console.log("from home-page-query: ", url.href);
-
   return await fetchAPI(url.href, { method: "GET" });
 }
 
-const globalSettingQuery = (locale: string) => qs.stringify({
-  locale,
-  populate: {
-    header: {
-      populate: {
-        logo: {
-          populate: {
-            image: {
-              fields: ["url", "name"],
+const globalSettingQuery = (locale: string) =>
+  qs.stringify({
+    locale,
+    populate: {
+      header: {
+        populate: {
+          logo: {
+            populate: {
+              image: {
+                fields: ["url", "name", "formats"],
+              },
             },
           },
+          navigation: true,
         },
-        navigation: true,
       },
-    },
-    footer: {
-      populate: {
-        cta: {
-          populate: {
-            button: true,
-          },
-        },
-        logo: {
-          populate: {
-            image: {
-              fields: ["url", "name"],
+      footer: {
+        populate: {
+          cta: {
+            populate: {
+              button: true,
             },
           },
-        },
-        quickLinks: true,
-        services: true,
-        contacts: true,
-        background: {
-          fields: ["url", "name"],
+          logo: {
+            populate: {
+              image: {
+                fields: ["url", "name", "formats"],
+              },
+            },
+          },
+          quickLinks: true,
+          services: true,
+          contacts: true,
+          background: {
+            fields: ["url", "name"],
+          },
         },
       },
     },
-  },
-});
+  });
 
 export async function getGlobalSettings(locale: string) {
   const path = "/api/global";
@@ -289,20 +286,21 @@ export async function getCourses(locale: string) {
   return await fetchAPI(url.href, { method: "GET" });
 }
 
-const allBlogsQuery = (locale: string) => qs.stringify({
-  locale,
-  sort: ["createdAt:desc"],
+const allBlogsQuery = (locale: string) =>
+  qs.stringify({
+    locale,
+    sort: ["createdAt:desc"],
 
-  populate: {
-    blog: {
-      populate: {
-        image: {
-          fields: ["url", "name"],
+    populate: {
+      blog: {
+        populate: {
+          image: {
+            fields: ["url", "name"],
+          },
         },
       },
     },
-  },
-});
+  });
 
 export async function getBlogs(locale: string) {
   const path = "/api/blogs";
@@ -313,22 +311,23 @@ export async function getBlogs(locale: string) {
   return await fetchAPI(url.href, { method: "GET" });
 }
 
-const allWebinarsQuery = (locale: string) => qs.stringify({
-  locale,
-  sort: ["createdAt:desc"],
-  populate: {
-    webinar: {
-      populate: {
-        cta: {
-          populate: {
-            button: true,
+const allWebinarsQuery = (locale: string) =>
+  qs.stringify({
+    locale,
+    sort: ["createdAt:desc"],
+    populate: {
+      webinar: {
+        populate: {
+          cta: {
+            populate: {
+              button: true,
+            },
           },
+          speakers: true,
         },
-        speakers: true,
       },
     },
-  },
-});
+  });
 
 export async function getWebinars(locale: string) {
   const path = "/api/webinars";

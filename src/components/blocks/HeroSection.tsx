@@ -92,6 +92,7 @@ export default function HeroSection({
                     alt={logo.image.name}
                     fill
                     className="object-contain"
+                    priority
                   />
                 </motion.div>
               ))}
@@ -133,6 +134,7 @@ export default function HeroSection({
                 width={1000}
                 height={1000}
                 className="lg:w-full lg:h-full "
+                priority
               />
             </motion.div>
 
@@ -181,6 +183,7 @@ export default function HeroSection({
                 width={300}
                 height={300}
                 className=""
+                priority
               />
             </div>
 
@@ -216,6 +219,7 @@ export default function HeroSection({
                   width={200}
                   height={200}
                   className="lg:mt-10 mt-20 lg:w-full lg:h-full w-30"
+                  priority
                 />
               </motion.div>
             </div>

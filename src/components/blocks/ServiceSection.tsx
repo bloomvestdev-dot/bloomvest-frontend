@@ -27,6 +27,7 @@ export default function ServiceSection({
           alt={background?.name || "Stock market analysis"}
           fill
           className="lg:w-full lg:h-full "
+          loading="eager"
         />
         <div className="absolute flex flex-col items-center justify-around gap-10 lg:gap-20 h-full py-20 px-10">
           <motion.div

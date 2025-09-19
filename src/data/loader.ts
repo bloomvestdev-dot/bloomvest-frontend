@@ -95,7 +95,7 @@ export async function getHomepageData(locale: string) {
   const BASE_URL = getStrapiURL();
   const url = new URL(path, BASE_URL);
   url.search = homePageQuery(locale);
-  return await fetchAPI(url.href, { method: "GET" });
+  return await fetchAPI(url.href, { method: "GET", next: { revalidate: 600 } });
 }
 
 const globalSettingQuery = (locale: string) =>

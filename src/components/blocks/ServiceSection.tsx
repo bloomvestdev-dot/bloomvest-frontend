@@ -26,7 +26,7 @@ export default function ServiceSection({
           src={background?.url}
           alt={background?.name || "Stock market analysis"}
           fill
-          className="lg:w-full lg:h-full "
+          className="lg:w-full lg:h-full hidden lg:block "
           loading="eager"
         />
         <div className="absolute flex flex-col items-center justify-around gap-10 lg:gap-20 h-full py-20 px-10">

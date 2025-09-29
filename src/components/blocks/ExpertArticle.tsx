@@ -133,15 +133,17 @@ export default function ExpertArticle({
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0.1 * index + 0.9 }}
             >
-              <motion.p
-                className="max-w-xs text-[#878C91] text-sm sm:text-sm md:text-sm lg:text-sm line-clamp-2"
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.4, delay: 0.1 * index + 1.0 }}
-              >
-                {item.blog.description}
-              </motion.p>
+              <div className="flex-1 min-w-0">
+                <motion.p
+                  className="max-w-xs text-[#878C91] text-sm sm:text-sm md:text-sm lg:text-sm line-clamp-2"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.4, delay: 0.1 * index + 1.0 }}
+                >
+                  {item.blog.description}
+                </motion.p>
+              </div>
               <motion.div
                 whileHover={{
                   scale: 1.05,

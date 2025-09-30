@@ -10,13 +10,12 @@ export default function ExpertArticle({
   title,
   description,
   cta,
-
   blogs,
 }: ExpertArticleProps) {
   console.log("expert article: ", blogs);
   return (
     <motion.div
-      className="mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-10 md:py-11 lg:py-12 mt-5 flex flex-col gap-10 sm:gap-14 md:gap-16 lg:gap-20 bg-[#FAFAFA]"
+      className="mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-10 md:py-11 lg:py-12 mt-5 bg-[#FAFAFA]"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -70,7 +69,7 @@ export default function ExpertArticle({
       </motion.div>
 
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-4 md:gap-5 lg:gap-5"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-4 md:gap-5 lg:gap-5 mt-10 sm:mt-14 md:mt-16 lg:mt-20"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}

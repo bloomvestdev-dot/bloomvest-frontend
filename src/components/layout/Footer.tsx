@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React from "react";
 import { Button } from "../ui/button";
 import { FaArrowRight } from "react-icons/fa6";
@@ -75,7 +75,7 @@ export default function Footer({ data }: FooterProps) {
     background,
   } = data;
 
-  console.log("footer data",data);
+  console.log("footer data", data);
 
   const constactIcons = [
     <MdCall size={15} />,
@@ -93,7 +93,7 @@ export default function Footer({ data }: FooterProps) {
           className="object-cover w-full h-full"
         />
         <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 py-8 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 gap-4 sm:gap-6 lg:gap-0">
-          <motion.h1 
+          <motion.h1
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white font-bold max-w-xs sm:max-w-sm md:max-w-md lg:max-w-5xl xl:max-w-6xl text-center lg:text-left"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -174,20 +174,32 @@ export default function Footer({ data }: FooterProps) {
               {rightsText}
             </p>
             <div className="flex gap-4 text-sm">
-              <Link 
-                href="/terms" 
+              <Link
+                href="/terms"
                 className="text-[#9B9B9C] hover:text-black transition-colors"
               >
                 Terms & Conditions
               </Link>
               <span className="text-[#9B9B9C]">|</span>
-              <Link 
-                href="/privacy" 
+              <Link
+                href="/privacy"
                 className="text-[#9B9B9C] hover:text-black transition-colors"
               >
                 Privacy Policy
               </Link>
             </div>
+            <p className="text-[#9B9B9C] text-sm sm:text-base mt-4">
+              Made by{" "}
+              <Link
+                href="https://birthgiverfilmproductions.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-black underline"
+              >
+                BirthGiver
+              </Link>{" "}
+              .
+            </p>
           </div>
         </div>
         <div className="col-span-1">
@@ -253,22 +265,37 @@ export default function Footer({ data }: FooterProps) {
       {/* Mobile Terms & Privacy Links */}
       <div className="lg:hidden mt-8 pt-6 border-t border-gray-200">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
-          <Link 
-            href="/terms" 
+          <Link
+            href="/terms"
             className="text-[#9B9B9C] hover:text-black transition-colors"
           >
             Terms & Conditions
           </Link>
           <span className="text-[#9B9B9C] hidden sm:inline">|</span>
-          <Link 
-            href="/privacy" 
+          <Link
+            href="/privacy"
             className="text-[#9B9B9C] hover:text-black transition-colors"
           >
             Privacy Policy
           </Link>
         </div>
-        <p className="text-[#9B9B9C] text-xs text-center mt-4">
-          {rightsText}
+        <p className="text-[#9B9B9C] text-xs text-center mt-4">{rightsText}</p>
+        <p className="text-[#9B9B9C] text-xs text-center mt-2">
+          Made by{" "}
+          <Link
+            href="https://birthgiverfilmproductions.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            BirthGiver
+          </Link>{" "}
+          <Link
+            href={"https://softexedge.in/"}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            .
+          </Link>
         </p>
       </div>
     </div>

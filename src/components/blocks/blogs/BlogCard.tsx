@@ -49,7 +49,7 @@ export default function BlogCard({ blog }: BlogProps) {
 
   return (
     <div className="col-span-1">
-      <div className="shadow-md border border-gray-200  rounded-2xl px-5 py-5 flex flex-col gap-8 h-full">
+      <div className="shadow-md border border-gray-200  rounded-2xl px-5 py-5 flex flex-col gap-8 h-[600px]">
         <StrapiImage
           src={image.url}
           alt={image.name}
